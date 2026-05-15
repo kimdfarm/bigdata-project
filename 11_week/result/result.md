@@ -5,6 +5,7 @@ LLM F1:    0.8598
 분류 실패(Unknown): 1건
 
 |               |precision  |  recall  |f1-score |  support|
+| :--- | :---: | :---: | :---: | ---: |
  |     Normal  |     0.85   |   0.83  |    0.84   |     47|
   | Anomalous    |   0.85    |  0.87   |   0.86   |     53|
  |   accuracy   |           |          |   0.85   |    100|
@@ -19,6 +20,7 @@ LLM F1:    0.7957
 분류 실패(Unknown): 1건
 
  |            | precision  |  recall | f1-score |  support|
+ | :--- | :---: | :---: | :---: | ---: |
  |     Normal    |   0.73   |   0.94  |    0.82   |     47|
  |  Anomalous    |   0.93  |    0.70   |   0.80   |     53|
 |   accuracy    |          |         |    0.81    |   100|
@@ -34,7 +36,7 @@ LLM F1:    0.8727
 분류 실패(Unknown): 0건
 
  |            | precision  |  recall | f1-score  | support|
-
+| :--- | :---: | :---: | :---: | ---: |
  |     Normal   |    0.88  |    0.81  |    0.84   |     47|
  |  Anomalous    |   0.84   |   0.91  |    0.87    |    53|
 
@@ -51,7 +53,7 @@ LLM F1:    0.8929
 분류 실패(Unknown): 0건
 
  |           |  precision  |  recall|  f1-score  | support|
-
+| :--- | :---: | :---: | :---: | ---: |
  |     Normal     |  0.93   |   0.81    |  0.86    |    47|
   | Anomalous    |   0.85   |   0.94   |   0.89   |     53|
 
@@ -68,7 +70,7 @@ LLM F1:    0.8807
 분류 실패(Unknown): 0건
 
   |            |precision  |  recall | f1-score  | support|
-
+| :--- | :---: | :---: | :---: | ---: |
     |  Normal  |     0.89    |  0.83  |    0.86    |    47|
    |Anomalous   |    0.86   |   0.91   |   0.88   |     53|
   |  accuracy     |         |          |   0.87   |    100|
