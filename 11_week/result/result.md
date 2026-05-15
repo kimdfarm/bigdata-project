@@ -70,9 +70,10 @@
 - LLM F1:    0.8807
 - 분류 실패(Unknown): 0건
 
-구분,precision,recall,f1-score,support
-Normal,0.89,0.83,0.86,47
-Anomalous,0.86,0.91,0.88,53
-accuracy,,,0.87,100
-macro avg,0.87,0.87,0.87,100
-weighted avg,0.87,0.87,0.87,100
+|구분|precision|recall|f1-score|support|
+| --- | --- | --- | --- | --- |
+| Normal|0.89|0.83|0.86|47|
+| Anomalous|0.86|0.91|0.88|53|
+| accuracy|||0.87|100
+| macro avg|0.87|0.87|0.87|100|
+| weighted avg|0.87|0.87|0.87|100|
