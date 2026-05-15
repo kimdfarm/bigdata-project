@@ -4,5 +4,5 @@
 4. pip install torch --extra-index-url https://download.pytorch.org/whl/cu128
 5. https://github.com/ljs535-source/BigDataAnalysis.git
 
-
+- pip freeze > requirements.txt
 (--default-timeout=1000)
