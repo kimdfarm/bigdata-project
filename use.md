@@ -2,5 +2,7 @@
 2. py -3.13 -m venv .venv
 3. .\.venv\Scripts\Activate.ps1
 4. pip install torch --extra-index-url https://download.pytorch.org/whl/cu128
+5. https://github.com/ljs535-source/BigDataAnalysis.git
+
 
 (--default-timeout=1000)
