@@ -6,14 +6,14 @@ import json
 import shutil
 import os
 from sentence_transformers import SentenceTransformer
-
+from huggingface_hub import snapshot_download
 # ----------------------------------------------------
 # [설정 및 캐싱] 모델을 한 번만 로드하여 서비스 속도를 극대화합니다.
 # ----------------------------------------------------
 @st.cache_resource
 def load_sbert_model():
     # 다국어 지원 SBERT 모델 로드
-    return SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')
+    return SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2' , use_auth_token=False)
 
 @st.cache_data
 def load_cluster_mapping(type):  # 👈 여기에 type 인자를 받을 수 있게 추가!
