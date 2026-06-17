@@ -9,13 +9,13 @@ import os
 from src.data_loader import load_processed_data , save_all_results
 from src.features import apply_use , load_data_from_disk
 import json
-data = None
 
 # 1. 전역 모델 변수 선언 (아직 모델을 로드하지 않은 상태)
 
 # --- 1. 데이터 로드 및 전처리 ---
 SAVE_DIR = "bigdata_presentation/project_template/data/model"
-
+if not os.path.exists(SAVE_DIR):
+    os.makedirs(SAVE_DIR)
 
 
 @st.cache_data
@@ -40,8 +40,8 @@ def get_clustered_data(_progress_bar, _status_text , reviewer_filter = "User만 
     df_pr_review['event_type'] = 'PullRequestReviewEvent'
     
 
-    df_issue, issue_labels = apply_use(df_issue)
-    df_pr, pr_labels = apply_use(df_pr)
+    df_issue, issue_labels = apply_use(df_issue,type="issue")
+    df_pr, pr_labels = apply_use(df_pr,  type="pull")
     return df_issue, df_pr, df_fork, issue_labels, pr_labels ,  df_issue_comment, df_issues, df_pr_comment, df_pr_review
 
 # [1] 설정은 오직 한 번만, 최상단에!
@@ -88,6 +88,14 @@ with col1:
 # 🚀 학습 로직
 with col2:
     reviewer_mode = st.radio("리뷰어 모드:", ["User만 포함", "User 및 Bot 포함"])
+    with st.expander("ℹ️ 분석 알고리즘 설명 보기"):
+        st.markdown("""
+        **분석 단계:**
+        1. **임베딩 (SBERT):** 텍스트의 의미 구조 파악
+        2. **차원 축소 (PCA):** 데이터 압축 및 성능 향상
+        3. **군집화 (GMM):** 확률 기반 그룹핑
+        4. **키워드 추출 (TF-IDF):** 그룹별 대표 단어 자동 선정
+        """)
     if st.button("🚀 학습"):
         # 1. 학습 상태를 보여줄 컨테이너 생성
         status_container = st.sidebar.container()
@@ -116,46 +124,45 @@ with col2:
             st.rerun() # 전체 페이지를 새로고침하여 로드된 데이터로 UI 구성
 
 # 📂 로드 로직
-with col3:
-    if st.button("로드"):
-        loaded_data = load_data_from_disk(SAVE_DIR=SAVE_DIR) 
-        if loaded_data:
-            st.session_state['loaded_data'] = loaded_data
-            st.success("데이터가 성공적으로 로드되었습니다!")
-            # 3. 데이터가 들어왔으니 강제 새로고침 혹은 메시지 갱신
-            st.rerun()
-        else:
-            uploaded_files = st.sidebar.file_uploader(
-                "클릭하여 데이터 파일 선택", 
-                type=["parquet", "json", "csv"], 
-                accept_multiple_files=True, 
-                key="demo_file_uploader"
-            )
-            st.sidebar.caption("☝️ 위 구역 클릭 시 탐색기 팝업 (필요한 파일 전체 선택)")
+# [1] 데이터 로드 함수 (상단에 위치)
+def load_and_rerun():
+    data = load_data_from_disk(SAVE_DIR=SAVE_DIR)
+    if data:
+        st.session_state['loaded_data'] = data
+        st.rerun()
 
-            # [2] 파일 주입 프로세스
-            if uploaded_files:
-                with st.sidebar.spinner("📦 선택하신 파일을 저장소에 저장하는 중..."):
-                    try:
-                        # 1. 기존 폴더 안의 낡은 파일들 청소
-                        for f in os.listdir(SAVE_DIR):
-                            file_path = os.path.join(SAVE_DIR, f)
-                            if os.path.isfile(file_path):
-                                os.remove(file_path)
-                        
-                        # 2. 새로운 파일들 안전하게 저장
-                        for file_obj in uploaded_files:
-                            with open(os.path.join(SAVE_DIR, file_obj.name), "wb") as f:
-                                f.write(file_obj.getbuffer())
-                        
-                        # 3. 핵심 치트키: 업로더 위젯 비우기 및 리런
-                        del st.session_state["demo_file_uploader"]
-                        st.cache_data.clear()
-                        st.toast("📂 데이터가 정상 주입되었습니다.")
-                        st.rerun()
-                        
-                    except Exception as e:
-                        st.error(f"💥 파일 저장 중 에러 발생: {e}")
+# [2] 로드 버튼 UI (사이드바 혹은 col3)
+with col3:
+    if st.button("디스크에서 로드"):
+        load_and_rerun()
+
+# [3] 파일 업로더 UI (if/else 밖으로 완전히 빼내기!)
+uploaded_files = st.sidebar.file_uploader(
+    "클릭하여 데이터 파일 선택", 
+    type=["parquet", "json", "csv"], 
+    accept_multiple_files=True,
+    key="demo_file_uploader"
+)
+
+# [4] 파일 저장 로직 (업로더와 독립적으로 동작)
+if uploaded_files:
+    with st.sidebar.spinner("📦 파일 저장 중..."):
+        try:
+            # 낡은 파일 청소
+            for f in os.listdir(SAVE_DIR):
+                os.remove(os.path.join(SAVE_DIR, f))
+            # 새 파일 저장
+            for file_obj in uploaded_files:
+                save_path = os.path.join(SAVE_DIR, file_obj.name)
+                with open(save_path, "wb") as f:
+                    f.write(file_obj.getbuffer())
+            
+            # 저장 후 자동 로드
+            load_and_rerun() 
+        except Exception as e:
+            st.error(f"에러: {e}")
+
+# [5] 데이터가 로드된 후 시각화 (여기가 핵심!)
 
 # [4] 메인 화면
 
@@ -176,247 +183,44 @@ if 'loaded_data' not in st.session_state:
                 'df_pr_review': pd.read_parquet(os.path.join(base_path, 'df_pr_review.parquet'))
             }
         except Exception as e:
-            st.error(f"데이터 로드 실패: {e}")
             st.stop()
 
-loaded_data = st.session_state['loaded_data']
+
+
+if 'loaded_data' not in st.session_state:
+    loaded_data = st.session_state['loaded_data']
+
+loaded_data = load_data_from_disk(SAVE_DIR)
+
+# 여기서 loaded_data가 None이거나 비어있으면 로딩 시도 자체를 안 하도록 막아야 합니다.
+if loaded_data and not all(val is None for val in loaded_data.values()):
 
 
 
-
-if data is not None:
-    df_issue, df_pr, df_fork, issue_labels, pr_labels, df_issue_comment, df_issues, df_pr_comment, df_pr_review = data
-    st.set_page_config(layout="wide")
-    st.title("🌌 오픈소스 영향력 스펙터클 매트릭스")
-    st.write("K-Means로 분류된 **소통 테마(Issue/PR)**와 **정량적 인기(Star/Fork)**의 상관관계를 분석합니다.")
-
-
-
-    # --- 3. 사용자 커스텀 가중치 (사이드바) ---
-    st.sidebar.header("⚙️ 영향력 반응 커스텀")
-    w_star = st.sidebar.slider("⭐ Star 가중치", 0.0, 10.0, 5.0)
-    w_fork = st.sidebar.slider("🍴 Fork 가중치", 0.0, 10.0, 3.0)
-
-    st.header("🎯 카테고리 조합별 저장소 분포 분석")
-    st.write("분석하고 싶은 **이슈 테마**와 **PR 테마**를 선택하세요. 모든 저장소의 해당 테마 활동성을 계산합니다.")
-
-    col_sel1, col_sel2 = st.columns(2)
-
-    with col_sel1:
-        # issue_labels의 value값들을 선택 리스트로 사용
-        selected_issue_label = st.selectbox("🔍 분석할 Issue 테마", list(issue_labels.values()))
-        # 선택된 라벨의 키(숫자)를 찾음
-        sel_issue_idx = [k for k, v in issue_labels.items() if v == selected_issue_label][0]
-
-    with col_sel2:
-        selected_pr_label = st.selectbox("🔍 분석할 Pull Request 테마", list(pr_labels.values()))
-        sel_pr_idx = [k for k, v in pr_labels.items() if v == selected_pr_label][0]
-
-    # --- 2. 선택된 카테고리에 대한 저장소별 활동 점수 계산 ---
-    # 각 저장소가 해당 클러스터(테마)에 속한 메시지를 몇 개나 가지고 있는지 카운트
-    issue_activity = df_issue[df_issue['cluster'] == sel_issue_idx].groupby('repo_name').size().reset_index(name='issue_score')
-    pr_activity = df_pr[df_pr['cluster'] == sel_pr_idx].groupby('repo_name').size().reset_index(name='pr_score')
-    # --- 3. 데이터 통합 (전체 저장소 기준) ---
-
-    # 1) 활동량 계산
-    issue_activity = df_issue[df_issue['cluster'] == sel_issue_idx].groupby('repo_name').size().reset_index(name='issue_raw')
-    pr_activity = df_pr[df_pr['cluster'] == sel_pr_idx].groupby('repo_name').size().reset_index(name='pr_raw')
-
-    # 2) 저장소 영향력 데이터 (Fork 이벤트 데이터가 곧 활동량이므로, 여기서 집계)
-    # 모든 저장소 목록을 확보하는 것이 중요합니다.
-    repo_meta = df_fork.groupby('repo_name').size().reset_index(name='fork_count')
-    # 만약 star_count 파일이 따로 없다면, fork_count를 기반으로 추정하거나 
-    # 실제 데이터에 있는 star 컬럼을 사용해야 합니다.
-    repo_meta['star_count'] = 100 # 추후 실제 컬럼으로 교체 필수
-
-    # 3) 병합
-    all_repos = pd.concat([df_issue['repo_name'], df_pr['repo_name'], repo_meta['repo_name']]).unique()
-    dist_df = pd.DataFrame({'repo_name': all_repos})
-
-    dist_df = dist_df.merge(issue_activity, on='repo_name', how='left').fillna(0)
-    dist_df = dist_df.merge(pr_activity, on='repo_name', how='left').fillna(0)
-    dist_df = dist_df.merge(repo_meta, on='repo_name', how='left').fillna(0)
-
-    # 4) 가중치 계산 (로직 간소화)
-    # 각 저장소의 기초 영향력 지수
-    repo_weight = (dist_df['star_count'] * w_star) + (dist_df['fork_count'] * w_fork)
-
-    # 가중치 적용된 활동 강도
-    dist_df['issue_weighted'] = dist_df['issue_raw'] * repo_weight
-    dist_df['pr_weighted'] = dist_df['pr_raw'] * repo_weight
-
-    # 최종 지표 (Bubble 크기용)
-    dist_df['Calculated_Influence'] = dist_df['issue_weighted'] + dist_df['pr_weighted']
-
-    top_5_for_chart = dist_df.sort_values('Calculated_Influence', ascending=False).head(5)
-    top_5_for_chart['rank'] = range(1, 6) # 순위 부여
-
-    # 기본 그래프를 그립니다.
-    fig_dist = px.scatter(
-        dist_df[dist_df['Calculated_Influence'] > 0], # 유의미한 활동이 있는 저장소만
-        x="issue_weighted",
-        y="pr_weighted",
-        size="Calculated_Influence",
-        color="Calculated_Influence",
-        hover_name="repo_name",
-        labels={
-            "issue_weighted": "가중치 적용 이슈 강도",
-            "pr_weighted": "가중치 적용 PR 강도"
-        },
-        title=f"⭐ Star/🍴 Fork 영향력이 반영된 테마 분포",
-        color_continuous_scale="Viridis",
-        template="plotly_dark",
-        # [특이하게 보여주기 1: 불투명도를 조절하여 다른 점들을 흐리게 만듭니다.]
-        opacity=0.4 # 다른 점들은 흐리게
-    )
-
-    # [특이하게 보여주기 2: 상위 5개 저장소만 특별한 마커와 라벨로 추가합니다.]
-    # Scatter trace를 하나 더 추가하는 방식입니다.
-    fig_dist.add_trace(
-        px.scatter(
-            top_5_for_chart,
-            x="issue_weighted",
-            y="pr_weighted",
-            size="Calculated_Influence",
-            color="rank", # 순위별로 색상 지정
-            color_continuous_scale="Reds", # 상위권은 빨간색 계열로 강조
-            hover_name="repo_name",
-            text="repo_name", # [핵심: 저장소 이름 라벨링]
-            # [특이하게 보여주기 3: 마커 스타일 변경]
-            # 마커 테두리를 진하게 하고 모양을 변경하여 강조
-        ).update_traces(
-            textposition="top center", # 라벨 위치 설정
-            marker=dict(line=dict(width=2, color='white'), symbol='diamond') # 마커 모양 변경
-        ).data[0]
-    )
-    # 시각적 가이드라인(평균선) 추가
-    fig_dist.add_hline(
-        y=dist_df['pr_weighted'].mean(), 
-        line_dash="dot", 
-        line_color="white", 
-        annotation_text="PR 가중 활동 평균"
-    )
-    fig_dist.add_vline(
-        x=dist_df['issue_weighted'].mean(), 
-        line_dash="dot", 
-        line_color="white", 
-        annotation_text="Issue 가중 활동 평균"
-    )
-
-    fig_dist.update_layout(
-        yaxis=dict(
-            scaleanchor="x",
-            scaleratio=1,  # 1:1 비율 (정사각형 유지)
-        ),
-        width=800,
-        height=800,
-    )
-
-
-    st.plotly_chart(fig_dist, use_container_width=True)
-
-    # --- 5. 분석 인사이트 ---
-    # --- 5. 분석 인사이트 (수정) ---
-    st.subheader("💡 데이터 분석 결과")
-
-    # 가중치 계산이 완료된 dist_df에서 가장 영향력이 큰 저장소 찾기
-    top_dist_repo = dist_df.sort_values('Calculated_Influence', ascending=False).iloc[0]
-
-    st.write(f"""
-    선택하신 **{selected_issue_label}**와 **{selected_pr_label}** 조합에서 가장 두드러지는 저장소는 **{top_dist_repo['repo_name']}**입니다. 
-    이 저장소는 해당 이슈 영역에서 **{top_dist_repo['issue_raw']:.0f}회**, PR 영역에서 **{top_dist_repo['pr_raw']:.0f}회**의 활동을 기록하며 
-    현재 설정된 가중치 기준으로 총 **{top_dist_repo['Calculated_Influence']:.2f}**의 영향력 지수를 확보했습니다.
-    """)
-
-
-    # --- 6. 상위 5개 저장소 상세 분석 ---
-    st.subheader("🏆 상위 5개 저장소 성과 비교")
-
-    # 영향력 기준 상위 5개 추출
-    top_5_repos = dist_df.sort_values('Calculated_Influence', ascending=False).head(5)
-
-    # 1) 표로 보기 좋게 출력
-    st.table(top_5_repos[['repo_name', 'issue_raw', 'pr_raw', 'Calculated_Influence']])
-
-
-
-
-    # --- 7. 저장소별 상세 이벤트 유형 분석 ---
-    # --- 7. 저장소별 상세 이벤트 구성 분석 ---
-    st.subheader("🔍 상위 5개 저장소 상세 이벤트 구성")
-    # df_issue_comment, df_issues, df_pr_comment, df_pr_review
-    # 1. 시각화 페이지에서 이벤트별로 다시 한번 확실하게 라벨링 (혹시 모를 누락 방지)
-    df_issue_comment['event_type'] = 'IssueCommentEvent'
-    df_issues['event_type'] = 'IssuesEvent'
-    df_pr_comment['event_type'] = 'PullRequestReviewCommentEvent'
-    df_pr_review['event_type'] = 'PullRequestReviewEvent'
-
-    # 2. 이슈 통합 데이터와 PR 통합 데이터 생성
-    df_issue_all = pd.concat([df_issue_comment, df_issues], ignore_index=True)
-    df_pr_all = pd.concat([df_pr_comment, df_pr_review], ignore_index=True)
-
-    # 3. 상위 5개 저장소 리스트 필터링
-    top_5_names = top_5_repos['repo_name'].tolist()
-
-    # 4. 상세 이벤트 구성 분석
-    issue_detail = df_issue_all[df_issue_all['repo_name'].isin(top_5_names)].groupby(['repo_name', 'event_type']).size().unstack(fill_value=0)
-    pr_detail = df_pr_all[df_pr_all['repo_name'].isin(top_5_names)].groupby(['repo_name', 'event_type']).size().unstack(fill_value=0)
-
-
-    # 가중치 계산을 위한 계수
-    weight_multiplier = (w_star * 10) + (w_fork * 10)
-
-    # 1) 이벤트별 횟수(Count)와 가중치 점수(Score) 계산 
-    # applymap 대신 map 사용!
-    issue_score_df = issue_detail.map(lambda x: x * weight_multiplier)
-    pr_score_df = pr_detail.map(lambda x: x * weight_multiplier)
-
-    # 2) 횟수와 점수를 보기 좋게 표로 합치기
-    # 나머지 로직은 그대로 유지하셔도 됩니다.
-    issue_combined = pd.concat([issue_detail.add_suffix('_count'), issue_score_df.add_suffix('_score')], axis=1)
-    pr_combined = pd.concat([pr_detail.add_suffix('_count'), pr_score_df.add_suffix('_score')], axis=1)
-
-    # 컬럼 순서 정렬
-    issue_combined = issue_combined.reindex(sorted(issue_combined.columns), axis=1)
-    pr_combined = pr_combined.reindex(sorted(pr_combined.columns), axis=1)
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.write("📊 이슈 이벤트 (횟수 vs 가중치 점수)")
-        st.dataframe(issue_combined, use_container_width=True)
-
-    with col2:
-        st.write("📊 PR 이벤트 (횟수 vs 가중치 점수)")
-        st.dataframe(pr_combined, use_container_width=True)
-
-    # 2) 상세 비교 차트 (가로 막대 그래프)
-    st.subheader("각 저장소의 '이슈 vs PR' 활동 비중 비교")
-    fig_bar = px.bar(
-        top_5_repos.melt(id_vars='repo_name', value_vars=['issue_raw', 'pr_raw']),
-        x='value',
-        y='repo_name',
-        color='variable',
-        orientation='h',
-        barmode='group',
-        labels={'value': '활동 횟수', 'repo_name': '저장소명', 'variable': '활동 유형'},
-        template="plotly_dark"
-    )
-    st.plotly_chart(fig_bar, use_container_width=True)
-
-
-
-elif loaded_data is not None:
+    
     df_issue, df_pr, df_fork, issue_labels, pr_labels = [loaded_data[k] for k in ['df_issue', 'df_pr', 'df_fork', 'issue_labels', 'pr_labels']]
     df_issue_comment, df_issues, df_pr_comment, df_pr_review = [loaded_data[k] for k in ['df_issue_comment', 'df_issues', 'df_pr_comment', 'df_pr_review']]
 
     st.set_page_config(layout="wide")
     st.title("🌌 오픈소스 영향력 스펙터클 매트릭스")
 
+    # 시각화 분석 가이드 (도움말)
+    with st.expander("ℹ️ 이 시각화는 무엇을 나타내나요?"):
+        st.write("""
+        이 매트릭스는 오픈소스 저장소들의 **'활동 강도'**와 **'영향력'**을 다차원적으로 분석하여 보여줍니다.
+        
+        * **가로축 (이슈 강도):** 해당 테마 내에서 발생하는 **이슈(Issue)**의 빈도와 영향력을 합산한 값입니다. 우측으로 갈수록 더 활발한 이슈 논의가 이루어짐을 의미합니다.
+        * **세로축 (PR 강도):** 해당 테마 내에서 발생하는 **Pull Request**의 빈도와 영향력을 합산한 값입니다. 위쪽으로 갈수록 코드 기여가 활발한 저장소입니다.
+        * **점의 크기 (기여자 수):** 해당 저장소에 참여하고 있는 고유 기여자(Contributor)의 수를 나타냅니다. 클수록 많은 사람이 협업하고 있습니다.
+        * **색상 (Calculated_Influence):** Star, Fork, 기여자 수를 종합적으로 고려한 **'최종 영향력 지수'**입니다. 밝은 색일수록 생태계 내 영향력이 큰 저장소입니다.
+        
+        **💡 분석 팁:** 우측 상단에 위치한 저장소일수록 이슈와 PR이 모두 활발한 '핵심 프로젝트'이며, 중앙에서 벗어난 점들은 특정 테마에서 독보적인 역할을 수행하고 있는 프로젝트들입니다.
+        """)
+
     # 사이드바 및 선택 로직
     st.sidebar.header("⚙️ 영향력 반응 커스텀")
-    w_star = st.sidebar.slider("⭐ Star 가중치", 0.0, 10.0, 5.0)
-    w_fork = st.sidebar.slider("🍴 Fork 가중치", 0.0, 10.0, 3.0)
+    w_star = st.sidebar.slider("⭐ Star 가중치", 0.0, 10.0, 1.0)
+    w_fork = st.sidebar.slider("🍴 Fork 가중치", 0.0, 10.0, 1.0)
 
     col_sel1, col_sel2 = st.columns(2)
     with col_sel1:
@@ -429,6 +233,7 @@ elif loaded_data is not None:
     # --- 2. 데이터 통합 (표준화된 컬럼 사용) ---
     issue_act = df_issue[df_issue['cluster'] == int(sel_issue_idx)].groupby('repo_name').size().reset_index(name='issue_raw')
     pr_act = df_pr[df_pr['cluster'] == int(sel_pr_idx)].groupby('repo_name').size().reset_index(name='pr_raw')
+    
     repo_meta = df_fork.groupby('repo_name').size().reset_index(name='fork_count')
     repo_meta['star_count'] = 100 
 
@@ -444,9 +249,20 @@ elif loaded_data is not None:
     dist_df['Calculated_Influence'] = dist_df['issue_weighted'] + dist_df['pr_weighted']
 
 
-    top_5_for_chart = dist_df.sort_values('Calculated_Influence', ascending=False).head(5)
-    top_5_for_chart['rank'] = range(1, 6) # 순위 부여
+    col1, col2 = st.sidebar.columns(2)
+    with col1:
+        start_rank = st.number_input("시작 순위", min_value=1, value=1)
+    with col2:
+        end_rank = st.number_input("종료 순위", min_value=start_rank, value=max(start_rank + 1, 10) )
 
+    # 2. 데이터 정렬 및 순위 범위 필터링
+    # 먼저 전체 영향력 순으로 정렬하고 rank 컬럼 생성
+    ranked_df = dist_df.sort_values(by='Calculated_Influence', ascending=False).reset_index(drop=True)
+    ranked_df['rank'] = range(1, len(ranked_df) + 1)
+
+    # 3. 사용자가 입력한 범위로 데이터 슬라이싱
+    # [시작-1 : 종료] (파이썬 인덱스는 0부터 시작하므로)
+    top_df = ranked_df.iloc[start_rank-1 : end_rank]
     # 기본 그래프를 그립니다.
     fig_dist = px.scatter(
         dist_df[dist_df['Calculated_Influence'] > 0], # 유의미한 활동이 있는 저장소만
@@ -460,17 +276,17 @@ elif loaded_data is not None:
             "pr_weighted": "가중치 적용 PR 강도"
         },
         title=f"⭐ Star/🍴 Fork 영향력이 반영된 테마 분포",
-        color_continuous_scale="Viridis",
+        color_continuous_scale="Turbo",
         template="plotly_dark",
         # [특이하게 보여주기 1: 불투명도를 조절하여 다른 점들을 흐리게 만듭니다.]
-        opacity=0.4 # 다른 점들은 흐리게
+        opacity=0.8 # 다른 점들은 흐리게
     )
 
     # [특이하게 보여주기 2: 상위 5개 저장소만 특별한 마커와 라벨로 추가합니다.]
     # Scatter trace를 하나 더 추가하는 방식입니다.
     fig_dist.add_trace(
         px.scatter(
-            top_5_for_chart,
+            top_df,
             x="issue_weighted",
             y="pr_weighted",
             size="Calculated_Influence",
@@ -527,10 +343,10 @@ elif loaded_data is not None:
 
 
     # --- 6. 상위 5개 저장소 상세 분석 ---
-    st.subheader("🏆 상위 5개 저장소 성과 비교")
+    st.subheader("선택한 저장소 성과 비교")
 
     # 영향력 기준 상위 5개 추출
-    top_5_repos = dist_df.sort_values('Calculated_Influence', ascending=False).head(5)
+    top_5_repos = dist_df.sort_values('Calculated_Influence', ascending=False).iloc[start_rank-1 : end_rank]
 
     # 1) 표로 보기 좋게 출력
     st.table(top_5_repos[['repo_name', 'issue_raw', 'pr_raw', 'Calculated_Influence']])
@@ -540,7 +356,7 @@ elif loaded_data is not None:
 
     # --- 7. 저장소별 상세 이벤트 유형 분석 ---
     # --- 7. 저장소별 상세 이벤트 구성 분석 ---
-    st.subheader("🔍 상위 5개 저장소 상세 이벤트 구성")
+    st.subheader("🔍 선택한 저장소 상세 이벤트 구성")
     # df_issue_comment, df_issues, df_pr_comment, df_pr_review
     # 1. 시각화 페이지에서 이벤트별로 다시 한번 확실하게 라벨링 (혹시 모를 누락 방지)
     df_issue_comment['event_type'] = 'IssueCommentEvent'
@@ -600,5 +416,6 @@ elif loaded_data is not None:
         template="plotly_dark"
     )
     st.plotly_chart(fig_bar, use_container_width=True)
+
 else:
-    st.warning("데이터가 로드되지 않았습니다. 잠시 후 다시 시도해주세요.")
+    st.error("데이터가 비어있습니다. 파일을 확인해주세요.")

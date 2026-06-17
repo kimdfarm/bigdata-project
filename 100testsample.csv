@@ -1,0 +1,884 @@
+,id,type,actor_login,repo_name,created_at,action,issue_title,comment_body
+39159,10354669720,IssueCommentEvent,hanks,pytorch/pytorch,2026-06-06T07:20:46Z,created,Fix INTERNAL ASSERT in torch.accelerator.empty_cache() on MPS,"@pytorchbot label ""topic: not user facing"""
+41226,10357197005,IssueCommentEvent,ashish-rcloud1,SCALE-TEST-R-CLOUD/Repository-1-20260606030328,2026-06-06T10:50:58Z,created,Automated Issue #1667,"Comment by **Sai-Chiraggs** Added at 2026-05-22T04:14:57Z 
+
+ I was able to reproduce this problem."
+7396,10155611118,IssueCommentEvent,Drewtopia,Drewtopia/dotfiles,2026-06-02T00:28:07Z,created,"Give the work-Windows relocation layer a seam: relocation partial, PATH spec, .relocated flag","Implemented in 89b490b (merged via #10): the `windows-relocation` shared partial exposes `Relocate` and `Get-NormalizedPath`, `.relocated` is computed once in `.chezmoi.toml.tmpl` and documented in CONTEXT.md, the old `Ensure-Reparse`/`Set-RelocationJunction` copies are deleted, and a Pester suite (tests/windows-relocation.Tests.ps1) covers both modules. Closing as satisfied."
+36131,10352447178,IssueCommentEvent,adityaharishch,Meridiona/meridian,2026-06-06T04:25:37Z,created,fix(doctor): detect bundle UI install in ui-built check,":tada: This PR is included in version 1.27.2 :tada:
+
+The release is available on:
+- [GitHub release](https://github.com/Meridiona/meridian/releases/tag/v1.27.2)
+- `v1.27.2`
+- [npm package (@latest dist-tag)](https://www.npmjs.com/package/@meridiona/meridian/v/1.27.2)
+
+Your **[semantic-release](https://github.com/semantic-release/semantic-release)** bot :package::rocket:"
+23105,10298299081,IssueCommentEvent,pmithrandir,OpenSeizureDetector/Garmin_SD,2026-06-04T20:56:53Z,created,Fix build under ConnectIQ SDK 9.1.0,"I checked and the Menu is working, it was a false alert.
+
+Great job !!"
+35638,10351822946,IssueCommentEvent,mochi1351,daulathussain/Multi-Blockchain-Crypto-Trading-Bot-with-Commission-Fee-System-Starter-File,2026-06-06T03:34:04Z,created,"Define TradeFi domain types, constants, and Zod validators",Closing because this issue was created in the upstream repository by mistake. The implementation tasks will be recreated in the project fork mochi1351/tradefi-crypto-trading-bot-saas.
+46441,10368076460,IssueCommentEvent,jfturcot,Herd-OS/herd,2026-06-06T23:20:37Z,created,Drop CODEX_AUTH_JSON from docker-exec passthrough & config validation,"📋 **Worker Progress** _(final)_
+
+# Issue #715 — Drop CODEX_AUTH_JSON from docker-exec passthrough & config validation
+
+- [x] internal/cli/exec_docker.go — removed CODEX_AUTH_JSON entry + its two-line comment from passEnv
+- [x] internal/cli/exec_docker_test.go — removed CODEX_AUTH_JSON from want slice, added NotContains assertion, removed the 1..16 numbered loop
+- [x] internal/config/validate.go — deleted CodexSubscriptionEnvSet func; removed now-unused `os` import (strings still used)
+- [x] go build ./... passes
+- [x] go test ./... passes
+- [x] go vet ./internal/cli/... ./internal/config/... passes
+- [x] golangci-lint run passes
+- [x] grep confirms no remaining CodexSubscriptionEnvSet references; no passEnv CODEX_AUTH_JSON
+"
+15409,10212197341,IssueCommentEvent,ChanyaVRC,ChanyaVRC/pyrust,2026-06-03T05:12:56Z,created,"match/case: invalid patterns not rejected — duplicate capture names (case [a,a]/{1:a,2:a}/P(a,a)), '_' as capture target, duplicate mapping keys","Two more invalid match patterns also accepted (same validation pass):
+
+```python
+match [1,2,3]:
+    case [*a, *b]: pass    # CPython SyntaxError: multiple starred names in sequence pattern ; pyrust accepted
+match {}:
+    case {**_}: pass       # CPython SyntaxError (cannot capture into '_') ; pyrust accepted
+```
+
+So the match-pattern validation should also reject multiple starred sub-patterns in a sequence pattern and `**_` (double-star wildcard capture into `_`).
+"
+48327,10368697825,IssueCommentEvent,nevena-rcloud,SCALE-TEST-R-CLOUD/Repository-1-20260606132154,2026-06-07T00:22:02Z,created,Automated Issue #686,"Comment by **shashank-hk-hycu** Added at 2026-05-21T20:41:55Z 
+
+ We may need additional logs for analysis."
+5196,10130257644,IssueCommentEvent,ahg-g,llm-d/llm-d-router,2026-06-01T12:43:04Z,created,Standardize InferenceRequestBody type across api formats for api-agnostic plugin consumption,"We will continue to pass the payload; however does this mean the tokenizer will need to be aware of which exact api is being used? For example, in https://github.com/llm-d/llm-d-router/pull/1115, how would it change to support Messages API?"
+13616,10206363471,IssueCommentEvent,hello-stephen,apache/doris,2026-06-03T01:06:02Z,created,[feature](inverted index) Introduce SPIMI V4 inverted index storage format,"# BE UT Coverage Report
+Increment line coverage `82.43% (5134/6228)` :tada:
+
+[Increment coverage report](http://coverage.selectdb-in.cc/coverage/41e7e0319c17eeec2be10e916d05b2eb913cb6fb_41e7e0319c17eeec2be10e916d05b2eb913cb6fb/increment_report/index.html)
+[Complete coverage report](http://coverage.selectdb-in.cc/coverage/41e7e0319c17eeec2be10e916d05b2eb913cb6fb_41e7e0319c17eeec2be10e916d05b2eb913cb6fb/report/index.html)
+| Category          | Coverage           |
+|-------------------|--------------------|
+| Function Coverage | 54.58% (21557/39496) |
+| Line Coverage     | 38.21% (205907/538920) |
+| Region Coverage   | 34.19% (161882/473462) |
+| Branch Coverage   | 35.20% (70801/201156) |"
+8227,10156990673,IssueCommentEvent,pewdiepie-archdaemon,pewdiepie-archdaemon/odysseus,2026-06-02T01:27:54Z,created,Add contributor docs and CI,"Good direction, but this should be reviewed as repo/process infrastructure, not a quick runtime patch. Architecture docs and templates are useful; CI can also be useful, but it must reflect what actually passes in a fresh checkout.
+
+Before merge, please rebase and verify the GitHub Actions workflow on the PR itself. If pytest is not installed locally, the CI file should install test dependencies explicitly and avoid optional-dependency failures.
+
+I would also consider splitting templates/docs from CI if the workflow needs iteration."
+61348,10382725456,IssueCommentEvent,PurHur,PurHur/php-compiler,2026-06-07T19:21:09Z,created,Epic: Self-host critical path — compiler compiles itself (M3→M5),"**Worker lane C — no eligible issue this run**
+
+Checked open queue per lane rules (`issue % 3 == 2`):
+
+1. `gh issue list --state open --limit 1000` — **303** open issues in lane C
+2. `gh pr list --state open --limit 50` — **0** open PRs (no duplicate-PR blockers)
+3. Filtered eligible: `implementation-ready`, no `claim:` in last 48h from another agent, **not** stdlib/`ext/*` builtins (STD Lib automation), **not** `php-in-php` / `php-runtime` / `runtime-shrink` (Runtime→PHP automation)
+
+**Result: 0 eligible issues in lane C.**
+
+Every lane C ticket is owned by another automation:
+- **Stdlib** (e.g. #7373 posix_mknod, #7358 Reflection docblock, #7331 openssl_cipher_iv_length, #7322 ResponseCode enum, #7295 ReflectionProperty hooks, …)
+- **php-in-php** (#7073 VM stream/dir zvals, #7103 serialize float formatting, #6821 phpc_stream.c wrapper stack, #7001 gmgetdate/gmmktime, …)
+
+Lowest lane C `implementation-ready` numbers skipped due to ownership: #6821, #7073, #7103, #7175, …
+
+No in-flight branch/PR on master for this worker. Stopping without claiming from lanes A (`%3==0`) or B (`%3==1`)."
+6508,10152135138,IssueCommentEvent,Lincyaw,LGU-SE-Internal/opentelemetry-demo,2026-06-01T22:09:40Z,created,Repository: Add standard .gitattributes file for consistent cross-OS file handling,"Added .gitattributes file to repository root that:
+1. Enforces LF line endings for all text files by default
+2. Marks all common binary file types (images, archives, fonts, executables etc.) as non-text to prevent line ending modification
+3. Explicitly specifies LF line ending handling for all common file types used in the repository including shell scripts, Go files, YAML, Markdown, Dockerfiles, Protobuf files, and programming language source files
+4. Sets appropriate CRLF line endings for Windows batch files (*.bat, *.cmd) for compatibility"
+60500,10380311332,IssueCommentEvent,pablomarin,pablomarin/claude-codex-forge,2026-06-07T16:27:37Z,created,[Radar] Add Dynamic Workflow Token Budget Guidance to autonomous-goal.md,"## Reinforcement: Reinforces #892: Dynamic Workflow Cost — concrete cap numbers now confirmed
+
+**Priority:** high
+
+Confirms specific scale caps: 16 concurrent subagents max, 1,000-agent lifetime limit per workflow. Issue #892's Cost Reality Check callout should cite both numbers so teams can budget before launching /forge-goal sessions.
+
+**Source:** [Claude Code Dynamic Workflows: 1,000 Subagents Outside Context — cost analysis](https://avinashsangle.com)"
+33165,10349353934,IssueCommentEvent,tatsuya1970,tatsuya1970/hiroshimacity-tenshutsu,2026-06-06T00:54:08Z,created,利用条件・ライセンスについての確認,"お問い合わせありがとうございます。
+LICENSE表記がなく、ご不便をおかけして申し訳ありませんでした。
+
+先ほど、READMEにライセンスに関する記載を追記しました。
+
+プログラム（コード）：MITライセンス
+地図データ・統計データ：各提供元（国土地理院「地球地図日本」／広島市統計書）の利用規約に従ってご利用ください。
+
+つまり、プログラム部分についてはMITライセンスに従っていただければ、ゼミ・研究・論文・オープンキャンパスでの展示、データの差し替えや改変など、ご自由にお使いいただけます。
+
+どうぞよろしくお願いいたします。"
+12456,10202090141,IssueCommentEvent,Lincyaw,LGU-SE-Internal/opentelemetry-demo,2026-06-02T22:16:36Z,created,CI: Add GitHub Actions workflow for markdown lint checks using markdownlint on PRs,"Added a GitHub Actions workflow for markdownlint that runs on all pull requests with Markdown file changes. The workflow uses the existing .markdownlint.yaml configuration in the repository, runs against all *.md files, and will fail the PR check if any lint errors are found."
+47813,10368579144,IssueCommentEvent,10ego,10ego/HREup,2026-06-07T00:10:42Z,created,🛑 Regulatory Decision Summary Page is down,"**Resolved:** Regulatory Decision Summary Page is back up in [`af9252a`](https://github.com/10ego/HREup/commit/af9252a6aad855fe791eb9864e93055a008eced6
+) after 32 minutes."
+38822,10354320452,IssueCommentEvent,lllacer,lllacer/Ticketing,2026-06-06T06:54:40Z,created,[5678] FUJITRANS - ,Let me connect you to our Customer Service officer.
+55813,10372971411,IssueCommentEvent,TypNull,TypNull/Tubifarry,2026-06-07T07:13:43Z,created,[BUG] Metadata errors causing failed download from youtube,"That is likely just how the YouTube downloader works. You need to install [FFmpeg](https://github.com/TypNull/Tubifarry#ffmpeg-and-audio-conversion), as downloaded video container files require the audio to be extracted."
+13235,10204314364,IssueCommentEvent,johnpooch,johnpooch/diplicity-react,2026-06-02T23:32:20Z,created,PRD: Naming of Variants,"What is the current state? Can't a user create a ""Classical"" variant right now? Doesn't seem like there's a problem here. "
+21978,10276276887,IssueCommentEvent,18202781743,linuxdeepin/dtkwidget,2026-06-04T11:07:10Z,created,fix: prevent IME from activating when echo mode is Normal,/forcemerge
+62207,10384191263,IssueCommentEvent,Mooknop,Mooknop/CNMH,2026-06-07T21:04:57Z,created,Clock: Exploration hybrid distance tracking,Already implemented — `ExplorationTimeControl.jsx` reads `cnmh_exploredist_global` against the slowest PC speed from the roster and shows a 'Party moved N ft → ~M min' suggestion. Memory was stale when this was filed.
+55595,10372797648,IssueCommentEvent,steipete,openclaw/openclaw,2026-06-07T06:58:50Z,created,fix(agents): decode xai and venice tool-call arguments exactly once,"Maintainer landing proof for rebased head `7942163e225c2b9acae609e12f27cb0e3d73cb6e`:
+
+Local verification:
+
+- `OPENCLAW_VITEST_MAX_WORKERS=1 node scripts/run-vitest.mjs src/agents/embedded-agent-runner/tool-call-argument-decoding.test.ts extensions/xai/stream.test.ts extensions/xai/index.test.ts extensions/xai/runtime-model-compat.test.ts extensions/venice/index.test.ts` passed: 5 files, 33 tests.
+- `pnpm exec oxfmt --check extensions/xai/stream.ts extensions/xai/stream.test.ts src/agents/embedded-agent-runner/tool-call-argument-decoding.ts src/agents/embedded-agent-runner/tool-call-argument-decoding.test.ts` passed.
+- `node scripts/run-oxlint.mjs extensions/xai/stream.ts extensions/xai/stream.test.ts src/agents/embedded-agent-runner/tool-call-argument-decoding.ts src/agents/embedded-agent-runner/tool-call-argument-decoding.test.ts` passed.
+- `pnpm tsgo:core` passed.
+- `pnpm tsgo:extensions` passed.
+- `git diff --check origin/main...HEAD` passed.
+- `pnpm changed:lanes --json` reported only core/coreTests/extensions/extensionTests for the touched files.
+- `/Users/steipete/Projects/agent-scripts/skills/autoreview/scripts/autoreview --mode branch --base origin/main` passed with no accepted/actionable findings.
+
+GitHub CI on the rebased PR head is green, including `build-artifacts`, `check-lint`, `check-test-types`, `check-additional-extension-bundled`, `check-additional-extension-channels`, `check-additional-extension-package-boundary`, `check-additional-runtime-topology-architecture`, `Real behavior proof`, and the selected security/quality checks.
+
+Provider proof caveat: I did not run a credentialed live xAI or Venice network call. This fix is in the local stream wrapper composition: xAI now delegates HTML-entity tool-call argument repair to the shared core compat path, and the core wrapper decodes each shared arguments object once across partial/message/result paths. The regression tests exercise that production wrapper shape and Venice's shared compat path.
+"
+28511,10339691073,IssueCommentEvent,bigsolevibes,bigsolevibes/bigsolevibes,2026-06-05T18:51:48Z,created,[monitoring] fix: Wire SlotPreviewModal into ContentQueue — click any slot to preview image a,Confirmed stable — no related errors in eng-bot over 4 days. Closing.
+38599,10354116981,IssueCommentEvent,melly-lgtm,melly-lgtm/inplan,2026-06-06T06:37:37Z,created,feat(skill): scoped auto-approval for the agent (review happens in the app),/agentic_review
+14810,10209452244,IssueCommentEvent,dadamschi,dadamschi/portergoldberg,2026-06-03T03:09:37Z,created,404: unknown,"**Occurred again at 2026-06-03T03:09:36.828Z**
+
+- Referer: https://portergoldberg.com/web/.env"
+65226,10386030259,IssueCommentEvent,agigante80,agigante80/Actual-sync,2026-06-07T23:36:26Z,created,Sync fails with error: No budget file is open,"Thanks for the detailed logs, @RealGandy — they pinpoint it well.
+
+**What's happening:** `downloadBudget` returns, but the budget never actually opens in memory — note the `api/load-budget` rejection with an empty message right before `getAccounts()` fails with *""No budget file is open.""* There are two known causes, and both have fixes in recent releases:
+
+1. **`@actual-app/api` 26.x `resetClock` quirk** — on a first-time/cold download (or after a sync-reset in the Actual UI), `downloadBudget` writes the files to disk but doesn't open the budget. A workaround that re-opens it explicitly landed in **v1.4.2**.
+2. **Data-directory permissions** — the container runs as a non-root user (UID 1001 by default). If the host folder you've mounted to `/app/data` is owned by a different user, `@actual-app/api` can't write the budget's SQLite database, which produces this exact symptom. **v1.4.3** adds `PUID`/`PGID` support and chowns `/app/data` + `/app/logs` on startup to fix this automatically.
+
+### First: upgrade
+
+Please update to the latest release (**≥ v1.4.2**, ideally **v1.4.3+**) and retry. There's a good chance one of the two fixes resolves it outright.
+
+### If it's a permissions issue (the likely one in Docker)
+
+**Step 1 — find the owner of your data folder.** On the **host** (not inside the container), look at the folder you've mapped to `/app/data`:
+
+```bash
+ls -lan /path/to/your/actual-sync/data
+```
+
+Note the numeric **UID** and **GID** in that listing (e.g. `1000 1000`, or `99 100` on Unraid).
+
+**Step 2 (recommended, v1.4.3+) — tell the container to run as that user.** Add `PUID`/`PGID` to your config and restart:
+
+```yaml
+services:
+  actual-sync:
+    environment:
+      - PUID=1000   # the UID from step 1
+      - PGID=1000   # the GID from step 1
+```
+
+```bash
+docker compose up -d
+```
+
+On startup the container aligns its user to `PUID:PGID` and chowns `/app/data` + `/app/logs` to match — no manual `chown` needed. You should see `Starting actual-sync as UID:GID 1000:1000` in the logs.
+
+**Alternative / older versions — make the folder writable by the container's user.** If you'd rather not set `PUID`/`PGID`, find the container's runtime UID and chown the **host** folder to match:
+
+```bash
+docker exec <container> id          # e.g. uid=1001 gid=1001
+sudo chown -R 1001:1001 /path/to/your/actual-sync/data
+docker compose up -d
+```
+
+Either approach works — the first tells the container which user to be; the second makes the folder owned by the container's user.
+
+### If it still fails on the latest version
+
+Please run these against the running container so we can confirm which cause it is:
+
+```bash
+docker exec <container> id                         # runtime UID/GID
+docker exec <container> ls -lan /app/data/beryl     # owner + perms
+docker exec <container> ls -la  /app/data/beryl/*/  # do db.sqlite / metadata.json exist + size?
+```
+
+- Files **missing/zero-size**, or owner ≠ runtime UID → it's **permissions** (apply the steps above).
+- Files **present and non-zero** → it's the **open/`resetClock`** path; v1.4.2's workaround should cover it. Debug logs (`LOG_LEVEL=debug`) showing whether `""Explicitly loaded budget after download""` appears would help.
+
+### To help diagnose, could you also share:
+
+1. **Your `docker-compose.yml` / `docker run`** (redact secrets) — especially the `/app/data` volume mount (bind mount vs named volume) and any `PUID`/`PGID` or `user:` settings.
+2. **Host platform** — Unraid, Synology, generic Linux, macOS, Windows/WSL? (Permission behavior differs a lot between these.)
+3. **Actual Budget *server* version** — a client/server version mismatch can trigger the cold-download path.
+4. **Is this a brand-new budget** on that server, or one that's synced before? And are you on **HTTPS with a self-signed cert** (`https://192.168.X.X:PORT`)?
+5. Are you using the **official image**, or a custom build?
+
+(No need for the Dockerfile — that's the published image's, which we have.) With the above we can confirm the cause in one round; there's a strong chance **v1.4.3** fixes it either way.
+"
+42891,10363729425,IssueCommentEvent,ed-donner,ed-donner/agents,2026-06-06T17:36:15Z,created,Added Aryan's Deep_Research_Project,Great - thanks so much!
+4666,10122506256,IssueCommentEvent,UmbiMax,AtaraxiaSpaceFoundation/Orion-Station-14,2026-06-01T09:19:31Z,created,[Tweak] D.O.O.R,"@coderabbitai Можно ли без [Dependency] решить вопрос? _animationSystem не существует
+"
+35196,10351528610,IssueCommentEvent,robbiet480,fleetdm/fleet,2026-06-06T03:09:19Z,created,"Custom SCEP proxy dynamic challenge (base64url) breaks Windows enrollment with ""non-printable character""","**Additional evidence: the proxy re-mints its own base64url challenge per resend, so an admin's alphanumeric CA challenge does not avoid this.**
+
+Resent the same Windows SCEP profile to the same host twice and captured the proxy `ServerURL` each time. The challenge (last `%2C`-delimited field) is different on each resend, confirming `ds.NewChallenge()` generates a fresh value rather than forwarding the CA's configured challenge:
+
+- Resend 1 challenge: `JURAzXStYElNpVi63B_ps6D0WxF7b3Gv`  ← contains `_`
+- Resend 2 challenge: `i-8MPPQ85Ux3uqNptijN53Ru3KYIIgEI`  ← contains `-`
+
+So both characters from the base64url alphabet (`_` and `-`) appear in practice, and the admin cannot avoid them by choosing an alphanumeric challenge on the CA side — the proxy substitutes its own. The Windows `ClientCertificateInstall/SCEP` CSP rejects both as non-printable, so the dynamic-proxy path is unusable on Windows until the generated challenge is constrained to a Windows-safe alphabet.
+
+Workaround confirmed working: bypass the proxy and point the Windows SCEP profile directly at the CA's static SCEP URL with an inlined alphanumeric challenge."
+41968,10358823669,IssueCommentEvent,biscuit-s,SteamClientHomebrew/Millennium,2026-06-06T12:48:40Z,created,[Bug 🪲]:Remote play together not working/not displaying correctly,"also happens on my end, this is the only thing preventing me from using millennium full time"
+50376,10369430775,IssueCommentEvent,KeyouXZ,KeyouXZ/Skynomi,2026-06-07T01:32:54Z,created,👋,Hi! Thanks for your interest. I'm not planning to update these plugins right now due to a busy schedule and no active maintainers.
+52327,10370512243,IssueCommentEvent,an0mium,synaptent/aragora,2026-06-07T03:12:30Z,created,Open a draft PR for an Improver Writer owner-helper dogfood fix that suppresses identify_lane_owner.py BrokenPipeError tracebacks when automation probes pipe JSON output.,Boss removed `boss-ready` because this issue is outside the canonical proof-first queue for the current tranche (non_canonical).
+88,10108884167,IssueCommentEvent,taku0,NixOS/nixpkgs,2026-06-01T00:08:13Z,created,firefoxpwa: fix build failure with wrapper,"@woffs `thunderbird-bin` is fixed here https://github.com/NixOS/nixpkgs/pull/525433 (https://github.com/NixOS/nixpkgs/pull/525433/changes/0820f8c4f8673c16c8959949ff84d852291d4a6f)
+
+Setting `libName` might be better than creating an empty directory if we can."
+10915,10168921641,IssueCommentEvent,DavidVentura,DavidVentura/offline-translator,2026-06-02T08:27:13Z,created,Consider transliterating text before performing TTS,"Yeah this sounds reasonable.
+
+I do wonder if it could automatically pick the right language/voice for mixed-script. But I don't think it's going to consistently work; the TTS requests don't specify what the language mix is, "
+59247,10375654164,IssueCommentEvent,ionfwsrijan,gopaljilab/Clinical-Insight-Engine,2026-06-07T10:58:19Z,created,fix: 955 duplicate routes,@gopaljilab The PR is mergeable now
+7000,10154382971,IssueCommentEvent,Mmesolove,StellaBridge/Bridge-Watch,2026-06-01T23:36:09Z,created,Add Data Expiry API,"@Mmesolove has applied to work on this issue as part of the **Stellar Wave Program**'s 5th wave.
+
+<!-- wave:application-id:227a2a02-97f4-4f53-87ea-7f957399b3f9 -->
+<!-- wave:app-text-start -->
+> Hi maintainer, I have read the description and I can solve it,please kindly assign to me 
+<!-- wave:app-text-end -->
+
+ℹ️ **Repo Maintainers**: To accept this application, [review their application](https://www.drips.network/wave/maintainers/issues/e48e6b89-c9d8-49bf-bdee-36fc40a0deae) or assign @Mmesolove to this issue."
+30656,10347531335,IssueCommentEvent,Manuem-dev,Manuem-dev/gestion-stock,2026-06-05T23:10:58Z,created,Revu de l'affichage des produits en rupture de stock,reçu
+61953,10383823376,IssueCommentEvent,Stanzilla,dependabot/dependabot-core,2026-06-07T20:36:36Z,created,Support PNPM v11,"Definitely still broken, both basic support and also support for new features in 11"
+52758,10370751995,IssueCommentEvent,nightah,stonerl/Thaw,2026-06-07T03:37:31Z,created,[Bug] screen goes black periodically,"@geopick do you mean Version 2.0.0-beta.14 (45) or the version I linked above in the issue?
+
+Also, you didn't attach your log file properly; I just see the name of the log."
+34962,10351410385,IssueCommentEvent,eduardomourar,uutils/coreutils,2026-06-06T03:01:33Z,created,wasm: support for wasm32-wasip2 target,"The main reason to have WASI Preview 2 is because Preview 1 is not being further developed. In wasip1, we would never get full support for streams and socket. With wasip2, on other hand, we will have those as well as support for the WebAssembly Component Model. This documentation might help answering you: https://component-model.bytecodealliance.org/design/why-component-model.html#interoperability
+
+Should we drop wasip1? Probably not yet. There are few features that are missing in Preview2:
+* std::os::wasi::prelude::OsStrExt is still under a unstable flag as discussed [here](https://github.com/rust-lang/rust/issues/130323)
+* [WASI CLI Exit with code has stabilized](https://github.com/WebAssembly/WASI/pull/913) but it has not been implemented in rust std
+* Generated WASM component cannot be easily loaded yet in the browser. You need [JCO](https://github.com/bytecodealliance/jco) to transpile it and include the respective WASI shims in order to have something similar to the Uutils Playground. "
+1205,10109975586,IssueCommentEvent,mohsen1,mohsen1/tsz,2026-06-01T01:16:14Z,created,fix(checker): preserve imported generic type-only contexts,"AgentName: Reviewer
+
+Finding: current ready head `534d3930a3439d6a8f18725e1ab558f9dd91125f` has two readiness blockers.
+
+First, `project-corpus-pr-body` is red on run `26730086315`; the Project Corpus Impact section uses bare `Row:`, `Bug family:`, and `Evidence:` lines instead of the required list-item shape (`- Row: ...`, `- Bug family: ...`, `- Evidence: ...`).
+
+Second, the diff touches `crates/tsz-checker/src/types/computation/identifier/core.rs`, and that hand-authored source shard is `2028` physical lines on this PR head. AGENTS section 19 has no ratchet exception for touched source files over 2000 lines.
+
+Why it matters: this is a ready checker/project-row PR, so both the remote PR body contract and the hard source-size gate need to be clean before queueing. The Kysely reduction may be useful, but exact-head CI/body evidence and file organization have to be reviewable first.
+
+Suggested fix before queue: update the Project Corpus Impact section to the required bullet format, split/move enough identifier-computation code so every touched source shard is under 2000 lines, refresh the PR body with the split evidence, and keep `merge-queue` off until exact-head PR checks are green after those changes.
+"
+17513,10244784777,IssueCommentEvent,rviscomi,web-platform-dx/developer-signals,2026-06-03T19:26:19Z,created,Transferable streams,"This issue has been identified as a duplicate of #133.
+
+To help consolidate developer signals and upvotes in one place, we are closing this issue. Please head over to #133 to leave any comments or thumbs-up reactions.
+
+Thank you for your support!"
+6432,10151817203,IssueCommentEvent,dime10,unitaryfoundation/jeff,2026-06-01T21:58:26Z,created,"While, DoWhile, and linear states","> Go with [MLIR's definition](https://mlir.llvm.org/docs/Dialects/SCFDialect/#scfwhile-scfwhileop). The condition and body blocks can read and modify the state. Both yield the same list of values, as they are all iteration arguments.
+
+In MLIR, the two blocks actually yield a (potentially) different set of values. Is the last sentence added as an explicit departure from the MLIR definition, or just an oversight? "
+7888,10156428960,IssueCommentEvent,bathina2,huggingface/Microsoft-Azure,2026-06-02T01:04:12Z,created,add golf-mcp/golf-prompt-guard  to foundry,Hey @alvarobartt following up on this as well. Any updates here? We would like to make some progress and use the AzureXHuggingface integration.
+58151,10374816800,IssueCommentEvent,Mingholy,Mingholy/loopat,2026-06-07T09:49:23Z,created,[Batch 1/5] feat(api-v1): accept images in POST /loops/:id/messages,Closing: this PR has merge conflicts with main and cannot be merged as-is.
+61725,10383655475,IssueCommentEvent,Zilderlan09,LarissaFDS/underwater_game,2026-06-07T20:23:23Z,created,"Testes finais, correção de bugs críticos e versão de produção","Atualização DevOps — Issue #17
+
+Testes finais realizados:
+
+* Partida completa testada nos dois caminhos: vitória por animais e vitória por eliminação.
+* Testes de desconexão realizados durante lobby, durante jogo e durante puzzle.
+* Testes cross-browser realizados em Chrome, Firefox e Edge.
+* Legibilidade dos textos verificada nos temas claro e escuro do sistema.
+* URL pública do Render validada sem necessidade de rodar nada localmente.
+* Conexão com os serviços públicos validada pelo console:
+
+  * game-service conectado;
+  * score-service conectado.
+* Framerate verificado por medição alternativa via `requestAnimationFrame`, com valores estabilizados acima de 55fps.
+* Vídeo de demonstração gravado: https://drive.google.com/file/d/1kaGGiPsMdLR__N8zGRzOdgbKi87pxIv_/view
+
+Observação sobre o deploy do frontend:
+
+O deploy final do frontend no Vercel/Netlify não pôde ser concluído corretamente a partir do repositório oficial porque o repositório `LarissaFDS/underwater_game` está vinculado à conta da proprietária e não aparece para importação na minha conta da plataforma, mesmo eu estando como colaborador no GitHub.
+
+Foi identificado que o projeto disponível no Vercel estava conectado a um clone privado, não ao repositório oficial. Por isso, as alterações relacionadas ao Vercel foram revertidas para preservar o estado funcional do projeto.
+
+Para concluir o deploy final do frontend, é necessário que a proprietária do repositório importe o projeto no Vercel/Netlify ou libere o acesso do GitHub App da plataforma ao repositório oficial.
+
+Configuração esperada para o deploy final:
+
+* Framework: Vite
+* Install Command: `cd client && npm install`
+* Build Command: `cd client && npm run build`
+* Output Directory: `client/dist`
+
+Variáveis esperadas no frontend publicado:
+
+* `VITE_AUTH_URL=https://underwater-game.onrender.com`
+* `VITE_SOCKET_URL=https://underwater-game.onrender.com`
+* `VITE_SCORE_URL=https://underwater-game.onrender.com`
+
+No Render, a variável `CLIENT_URL` deve apontar para a URL final do frontend publicado.
+"
+55267,10372687698,IssueCommentEvent,oil-lamp-cat,oil-lamp-cat/oil-lamp-cat.github.io,2026-06-07T06:48:32Z,created,이미지_HTB_2026_하반기,"<img width=""600"" height=""191"" alt=""Image"" src=""https://github.com/user-attachments/assets/1a104e47-cb5f-4204-947f-1aee57365d1c"" />"
+31411,10348045860,IssueCommentEvent,CodeEagle,CodeEagle/lzcat-apps,2026-06-05T23:38:32Z,created,[migration] knowless,"### `discovery_review` → `supervisor_handling`
+via `supervisor.claim` • @ 2026-05-19T15:18:28Z • [run #26106708477](https://github.com/CodeEagle/lzcat-apps/actions/runs/26106708477)
+
+7x24 supervisor claimed this item for triage
+
+<details><summary>context</summary>
+
+- attempts: `0`
+- last_error: `claude discovery reviewer exited 1`
+
+</details>
+
+---
+
+### `supervisor_handling` → `discovery_review`
+via `supervisor.release` • @ 2026-05-20T02:02:36Z • [run #26136720620](https://github.com/CodeEagle/lzcat-apps/actions/runs/26136720620)
+
+supervisor claim stale for 644m; restored to discovery_review
+
+<details><summary>context</summary>
+
+- attempts: `0`
+- last_error: `claude discovery reviewer exited 1`
+
+</details>
+
+<!-- lzcat-autopost: state_history_to_issues.py -->
+"
+41391,10357408774,IssueCommentEvent,nesquena-hermes,nesquena/hermes-webui,2026-06-06T11:09:48Z,created,Bug: Context length indicator ignores `providers` / `custom_providers` per-model overrides,"Thanks for the unusually thorough writeup. I traced all three WebUI codepaths plus the agent-side helpers, and the citations check out — but there's a gap in the proposed fix for the *headline* repro that's worth flagging before anyone implements it.
+
+## The three codepaths are accurate
+
+- **Codepath 1** — `api/routes.py:_resolve_context_length_for_session_model` (the function is at line 2260 on master, not 2205). Confirmed: line 2299 reads only the legacy list (`_cfg_for_cl.get('custom_providers')`), and line 2306 passes `""""` for base_url:
+
+```python
+_raw_cp_load = _cfg_for_cl.get('custom_providers') if isinstance(_cfg_for_cl, dict) else None
+...
+return _get_cl(model_for_lookup, """", config_context_length=_cfg_ctx_len_load, ...)
+```
+
+- **Codepath 2** — `api/streaming.py:4581` — confirmed, the metering-guard recompute calls `get_model_context_length` with no `custom_providers` kwarg.
+- **Codepath 3** — `api/streaming.py:6699` — confirmed, reads only the legacy list.
+
+The fix direction (route through `hermes_cli.config.get_compatible_custom_providers` and pass `model.base_url`) matches what the agent already does at `agent/agent_init.py:1325-1347`, so it's the right shape for the `custom_providers`-with-`base_url` case.
+
+## The gap: the anthropic repro has no base_url
+
+Your reproduction config uses `providers.anthropic.models.<model>.context_length` — a *standard* provider with no `base_url`. The proposed fix won't resolve that, because the agent's per-model override lookup is base_url-keyed end to end:
+
+1. `get_compatible_custom_providers` folds the keyed `providers` dict via `providers_dict_to_custom_providers` → `_normalize_custom_provider_entry`, which **drops any entry without a valid base_url** (`hermes_cli/config.py:3728`):
+
+```python
+if not base_url:
+    return None
+```
+
+2. Even if an entry survived, `get_custom_provider_context_length` matches strictly by URL and bails on an empty target (`hermes_cli/config.py:3884`, `:3898`): `if not model or not base_url: return None`.
+
+3. `agent/model_metadata.py:1524` gates step 0b the same way: `if custom_providers and base_url and model:`.
+
+So `providers.anthropic` with `models:` but no `base_url` produces no usable entry, and the per-model override is invisible to all three layers — the proposed patch included.
+
+## What actually drives your flicker
+
+For the non-default model (`claude-opus-4-6`), the real culprit is the default-match gate in codepath 1 at `api/routes.py:2287-2290`:
+
+```python
+if _raw_cfg_ctx_load is not None and (
+    not _cfg_default_model
+    or _model_matches_configured_default(model_for_lookup, _cfg_default_model, provider)
+):
+```
+
+Your global `model.context_length: 256000` only gets applied to the *default* model here (this gate is intentional — it stops a default's cap clobbering a 1M variant). The agent side does **not** gate it (`agent_init.py:1300`, `_config_context_length = _model_cfg.get(""context_length"")` is applied unconditionally), which is why the compressor holds 256k for both models while the WebUI display drops to the 1M catalog value for the non-default one.
+
+## Recommendation
+
+The `custom_providers` (LiteLLM-style, base_url present) half of your report is genuinely fixed by the proposed patch. For the standard-provider keyed-schema half, a base_url-keyed lookup can't help — closing that needs a provider-key-based override read (e.g. `cfg['providers'][provider]['models'][model]['context_length']`) that doesn't depend on base_url, ideally added to `hermes_cli.config` so the agent and WebUI share one resolver. If your live deployment uses `custom_providers` with a real `base_url` (not the bare `providers.anthropic` shown), the proposed patch should cover it as-is — worth confirming which schema you're actually running, since the two halves need different fixes.
+"
+40527,10356340133,IssueCommentEvent,an0mium,synaptent/aragora,2026-06-06T09:35:51Z,created,fix(review-queue): fail closed on partial evidence,"## Claude independent model review
+
+Reviewer: claude (anthropic) — independent adversarial model review via the Aragora Claude reviewer, grounded on the exact PR head.
+Head: 317b942 (317b94232d3ba41c3a1e546a94010dfdf069f85f), committed 2026-06-06T07:39:07Z.
+PR: #7825.
+Model family: claude
+
+Verdict: PASS
+
+No blocking correctness, security, or regression issues. A few non-blocking observations:
+
+- [P3] `aragora/swarm/quorum_evidence.py:595-610` — In `_locked_quorum_reconcile_state`, the lock acquisition does `os.open(..., O_EXCL)` then `os.write(fd, ...)` outside a try/finally. If `os.write` raises anything other than `FileExistsError`, the fd leaks and the lock file is orphaned until the 15‑min stale recovery kicks in. Wrap the write (or move to `os.fdopen`) with a guard that closes+unlinks on failure.
+- [P3] `aragora/swarm/quorum_evidence.py:618-624` — The finally always `unlink(lock_path)` without verifying the file on disk is still ours. If a process's lock is wrongly detected as stale (PID reuse + >15 min age) and another process recreates the lock, the original owner finishing later will unlink a lock it doesn't own. Strict stale guards (age + alive PID check) make this very unlikely, but writing the fd content with a per-process token and verifying before unlink would close the hole.
+- [P3] `aragora/swarm/quorum_evidence.py:373-405` — Per‑reviewer `multiprocessing.get_context(""spawn"")` reboots a Python interpreter for every API agent family. With multiple families per PR this adds seconds of latency to `collect_evidence`. Worth measuring; consider a single reviewer subprocess that handles all families serially.
+- [P3] `aragora/swarm/quorum_evidence.py:258-271` — `_reviewer_verdict` actually returns the verdict from the *first line that starts with* ""verdict:"", not the first non‑empty line as the docstring states. In practice the reviewer prompt enforces it at the top so this is benign, but the docstring overpromises.
+- [P3] `aragora/swarm/quorum_evidence.py:626-633` — `default_quorum_reconciler` imports private `_load_state`/`_save_state` from `scripts.reconcile_merge_quorum`. Tight coupling to internals; consider promoting these to a small public surface so future refactors don't silently break the locked state path.
+
+The new ""two supportive verdicts required"" gate is a deliberate behavior change and is fully covered by updated tests (`test_collect_failed_reviewer_is_reported`, `test_collect_does_not_post_uncountable_evidence`, `test_collect_rejects_unsupported_family`, new dissent/quorum‑incomplete tests). The reconciler‑under‑lock flow and stale‑PID recovery both have direct tests. Multiprocessing timeout/cleanup paths have unit coverage for blocked workers and stuck close coroutines.
+
+dogfood: yes
+"
+2490,10111729870,IssueCommentEvent,NullVerdict,ilyhalight/voice-over-translation,2026-06-01T02:54:22Z,created,"Пропала возможность использовать перевод ""Живые голоса""","@zefkerr Живые голоса были убраны из настроек в версии 1.11.6, теперь они находятся здесь.
+Или вы имеете в виду, что из этого нового меню исчезли живые голоса?
+
+<img width=""428"" height=""278"" alt=""Image"" src=""https://github.com/user-attachments/assets/0b7e0c04-b7df-4127-be75-b56203ec7a4d"" />"
+35012,10351446391,IssueCommentEvent,jwj2002,jwj2002/agents,2026-06-06T03:03:52Z,created,feat(telemetry): universal session-level capture hook (#229),"## Review (scratch) — REQUEST CHANGES (1 blocking + 1 should-fix)
+
+Strong hook overall: fail-open `main()` (returns 0 on any error), read-only timed subprocess, metadata-only record, idempotent boundary-freeze. Two changes before merge:
+
+**🔴 Blocking — secret-capture via raw bash commands.** `_parse_transcript` line 184 appends `cmd[:300]` (the *raw* command) to `bash_patterns`, and that list is persisted into the (hub-synced) session shard at the record's `artifact_evidence.bash_patterns`. Raw commands can contain inline secrets (`export API_KEY=…`, bearer tokens, inline passwords). This violates the spec's sanitization stance + E15. **The hook already derives `has_commit`/`has_test_run` from the command (lines 185-188), so the raw list isn't needed for classification.** Fix: drop `bash_patterns` from the persisted record (keep the derived booleans); if a command signal is wanted, store a **categorized token** (e.g. `git_commit`, `test_run`, `pip_install`), never the raw string. Add a test asserting **no raw command string appears in the written record**.
+
+**🟠 Should-fix (same pass) — dead capture of `first_user_text`.** Lines 150-158 capture `content[:500]` of the user's first turn, but it's *not* in the written record — dead capture of potentially-sensitive prompt text + a latent leak. Remove the capture (or derive a non-sensitive boolean if a deliberative signal is needed later).
+
+**🟡 Follow-ups (NOT this PR):** cap transcript parse at N lines (bound Stop-hook latency on huge transcripts); `sessions.jsonl` rotation. File as a separate issue.
+
+Judgment calls (1) gitignore + (2) §2.5-flag-deferral: both approved. Re-request review when the two fixes + the no-secret test are in."
+32807,10349065553,IssueCommentEvent,VitorMRodovalho,VitorMRodovalho/ai-pm-research-hub,2026-06-06T00:37:38Z,created,certificates: persist counter-signature proof and agreement evidence,"Closing as **already-fixed + deployed** (PM-approved 2026-06-05). The 2026-05-19 premise (counter_signature_hash absent; signed_ip/UA never persisted) was remediated and shipped:
+- `certificates.counter_signature_hash` column exists; `counter_sign_certificate(uuid, p_signed_ip, p_signed_user_agent)` writes the hash + logs to `admin_audit_log` + notifies the member.
+- `sign_volunteer_agreement(...)` persists `signed_ip` + `signed_user_agent` (500-char server cap).
+- Migration `20260724000000_p203_issue_181_persist_signature_evidence.sql` applied + registered; live RPC bodies byte-match it (restored in `20260802000006` after the p209 drift batch).
+- Contract test `tests/contracts/certificate-signature-evidence.test.mjs` asserts every acceptance criterion + is in CI.
+
+Forward-only by design: the 33 legacy counter-signed + 41 pre-fix signed rows can't be backfilled (their hashes depend on past now()/IP/UA that can't be reconstructed — stated in the migration header). Optional follow-up (filed separately if wanted): wire `p_signed_user_agent` through the MCP `counter_sign_certificate` tool (index.ts:3453) for MCP-path UA parity."
+52060,10370403131,IssueCommentEvent,mloh908,mloh908/YT-fake-and-unwanted-or-malicious-channel-,2026-06-07T03:01:56Z,created,Unwanted,"https://m.youtube.com/@ashrafabulkherYT
+Blocked "
+63435,10385149907,IssueCommentEvent,Fluxerr,Fluxerr/SteamVault,2026-06-07T22:21:42Z,created,Error,Please try to restart steam
+59847,10377140916,IssueCommentEvent,jocoo,Szotasz/marveen,2026-06-07T12:37:07Z,created,"fix(agent-process,start): execFile tmux launch + optional google-sheets MCP",Closing: the google-sheets MCP boot block in start.sh is no longer needed -- the project is migrating to Google Drive MCP for sheets access. The execFile-vs-execSync fix for the tmux launch could be split out into a smaller PR if there is interest.
+56051,10373079365,IssueCommentEvent,loning,the-omega-institute/newmath,2026-06-07T07:22:46Z,created,SAE/Probe backend,"## 📊 codex 进展 phase9-issue910-r3-judge (⏳ 进行中; 已跑 0 min)
+
+```
++solver_verdicts:
++  minimal: propose
++  structural: false-positive
++  delete: false-positive
++decision: converge
++---
++
++## Decision
++r3 未达到 3/3 unanimous consensus，不能 dispatch implement。minimal 明确允许在 `owner TBD` 与 `transition=unknown/0/none` 下落一个两文件、fail-closed、pointer-only 的 `SAEProbeBackendEvidenceAdapter` 合同；structural 与 delete 则都把当前 work unit 判为无 producer 的 false-positive/collapse，主张 #910 只保留为 issue-only hardgate/schema spec，等真实 SAE/probe evidence producer、runner、metrics owner 或 intervention/patching artifact envelope 成为 scope source 后再实现。三方都同意 `.refactor-loop/host.env` 不是生产 SSOT，不改 CLAUDE.md/Tier/SPEC/Lean/BEDC paper，也同意未来任何 D3+ 都必须有 classifier-surface delta、`net_positive_signal=true`、intervention 或 patching evidence；唯一剩余分歧是 issue-only hardgate/schema 是否足以授权创建可加载但永久 blocked/DN 的 adapter surface。
++
++## If converge
++- Convergence question (specific): 在 issue 910 的 `owner TBD` 与 `transition=unknown/0/none` 条件下，issue-only hardgate/schema spec 本身是否构成创建 loadable fail-closed adapter 的实现授权，还是必须 collapse 到真实 evidence producer 出现后；请三方给出同一 terminal action。
++- What each solver should address explicitly:
++  - 必须直接选择 `adapter-authorized` 或 `collapse-until-producer`，不要同时保留两套可选路径。
++  - 如果选择 `adapter-authorized`，必须说明为什么无 producer 的 `compute_metrics`、`derive_ledger_rows`、`derive_negative_discovery_rows`、`project_discovery_level` 不构成 self-referential evidence，并固定 exact 文件清单是否仅为 `sae_probe.py` + `test_sae_probe_backend.py`。
++  - 如果选择 `collapse-until-producer`，必须说明 false-positive 是否可由当前 issue body/comments 与本轮 solver evidence 验证，且 terminal action 是 blocking comment、label、duplicate/collapse 还是 close-wontfix。
++  - 三方都必须继续保持 `.refactor-loop/host.env` 非生产 SSOT；不改 CLAUDE.md、Tier、SPEC、Lean、BEDC paper、canonical report registry 或 discovery core。
++- Round number this fires: 4; marker payload uses source round `3`
++
++## Round audit trail (links to local artifacts)
++- solver-minimal: .refactor-loop/logs/phase9-issue910-r3-minimal.log
++- solver-structural: .refactor-loop/logs/phase9-issue910-r3-structural.log
++- solver-delete: .refactor-loop/logs/phase9-issue910-r3-delete.log
++
++⟦AI:AUTO-LOOP⟧
+```
+
+> 自动更新每 10 分钟;edit-in-place 不堆评论;codex EXIT=0 后此 comment 自动删除。
+🤖 controller progress reporter
+
+⟦AI:AUTO-LOOP⟧
+"
+51908,10370199728,IssueCommentEvent,Predidit,Predidit/Kazumi,2026-06-07T02:40:58Z,created,[Bug]: 2.1.3版本，使用视频内手势会导致应用闪退,2.1.4 已经发布
+18952,10253128074,IssueCommentEvent,jun1okamura,OpenSUSI/TR-1um,2026-06-03T22:55:15Z,created,TR-1um Pcell library: Revised moscap Pcell,Thank you for updating it to fix.
+29504,10345535325,IssueCommentEvent,lerian-studio,LerianStudio/github-actions-shared-workflows,2026-06-05T21:49:34Z,created,feat(benedita): register forge under app_helmfile_env (cross),"<!-- lint-analysis -->
+## 🔍 Lint Analysis
+
+| Check | Files Scanned | Status |
+|-------|:-------------:|:------:|
+| YAML Lint | 1 file(s) | ✅ success |
+| Action Lint | _no changes_ | ⏭️ skipped |
+| Pinned Actions | _no changes_ | ⏭️ skipped |
+| Markdown Link Check | _no changes_ | ⏭️ skipped |
+| Spelling Check | 1 file(s) | ✅ success |
+| Shell Check | _no changes_ | ⏭️ skipped |
+| README Check | _no changes_ | ⏭️ skipped |
+| Composite Schema | _no changes_ | ⏭️ skipped |
+| Deployment Matrix | 1 file(s) | ✅ success |
+---
+<sub>🔍 [View full scan logs](https://github.com/LerianStudio/github-actions-shared-workflows/actions/runs/27041906409)</sub>
+"
+61092,10382206994,IssueCommentEvent,konard,xlabtg/teleton-agent,2026-06-07T18:41:18Z,created,fix: отключить native tools для NVIDIA GLM-5.1,"## ✅ Ready to merge
+
+This pull request is now ready to be merged:
+- All CI checks have passed
+- No merge conflicts
+- No pending changes
+
+---
+*Monitored by hive-mind with --auto-restart-until-mergeable flag*"
+796,10109521314,IssueCommentEvent,BBuf,sgl-project/sglang,2026-06-01T00:48:51Z,created,Optimize Gemma4 H200 MoE and extend attention,/rerun-failed-ci
+30663,10347534613,IssueCommentEvent,dadamschi,dadamschi/portergoldberg,2026-06-05T23:11:09Z,created,404: /,"**Occurred again at 2026-06-05T23:11:08.721Z**
+
+- Referer: https://portergoldberg.com/"
+44774,10366943259,IssueCommentEvent,SwissalpS,mt-mods/technic,2026-06-06T21:48:31Z,created,allowing any sand in the alloyer recipe for silicon wafers,Purer in what? Some sands have more of X-component others of Y. Also not all sand is shaped the same but that isn't as important when melting it down.
+29783,10346461730,IssueCommentEvent,Ialdabaoth,Ialdabaoth/Ialdabaoth,2026-06-05T22:24:21Z,created,contact QRI for various projects. ,"> > ""Mycorhizal networking"" (Heph)
+> 
+> This is this one right?
+> 
+> > ""can a mushroom forest learn to use an LLM and speak to humans"" (is anyone working on this?)
+> 
+> https://x.com/DefenderOfBasic/status/2030071354960060919
+> 
+> 
+
+Correct! But humanoid's is likely to be a better ""opening conversation"" given how much easier it would be to start."
+31739,10348290300,IssueCommentEvent,emooreatx,CIRISAI/CIRISRegistry,2026-06-05T23:50:39Z,created,[Post-v2.0.0] Enforce CEG 0.2 §10.3.1 STH consistency-proof at cosign admission,"Closed in **v2.3.0** (R3). RFC 6962 §2.1.2 consistency verifier (db::merkle_consistency, vendored from the vetted ciris-verify-core::transparency, TDD'd against independent Python/hashlib known-answer vectors — 10 tests). Admission gate in sth_cosign anchors on the Registry-recorded prior STH per witness; first-cosign exempt; CONSISTENCY_PROOF_INVALID (422) on failure. §10.3.1 now ENFORCED. Validation in flight."
+8732,10158080742,IssueCommentEvent,tranha80,ritesh-1918/HELPDESK.AI,2026-06-02T02:12:32Z,created,CRITICAL: Frontend crash in AdminTicketDetail + XSS in AI chat markdown rendering,"Subject: Experienced Frontend Developer Ready to Resolve Your Critical Issues (Admin Crash & XSS)
+
+Dear Hiring Manager,
+
+I am writing to express my immediate and strong interest in your critical frontend stability and security issues, specifically the `AdminTicketDetail` runtime crash and the XSS vulnerability in the AI chat's markdown rendering. Having reviewed your job description in detail, I understand the severity and urgency of these problems, and I am confident that my extensive experience as a professional frontend developer makes me the ideal candidate to implement and verify the necessary fixes swiftly and effectively.
+
+**Understanding the Critical Problems:**
+
+1.  **CRITICAL: Frontend Crash in `AdminTicketDetail`**: The `ReferenceError` caused by the missing `safeDisplayText` import is a showstopper, completely breaking a vital admin page. This is a common but impactful oversight that demands immediate attention.
+2. 2.  **HIGH: XSS Vulnerability in AI Chat**: The unsanitized rendering of AI-generated markdown is a serious security flaw. Given the unpredictable nature of AI content and the risk of prompt injection, preventing potential XSS attacks through proper sanitization is paramount to protect your users and your application's integrity.
+**My Expertise & Value Proposition:**
+
+With over 8 years of experience in React, JavaScript, and modern frontend development, I specialize in not only building robust user interfaces but also in meticulously debugging complex issues and implementing stringent security measures. My background includes:
+
+*   **Deep React & Frontend Proficiency**: Expert-level command of React, component lifecycles, state management, and debugging complex runtime errors.
+* *   **Security-First Development**: Extensive experience in identifying and mitigating common web vulnerabilities, particularly XSS, by implementing proper sanitization, input validation, and secure rendering practices.
+* * *   **Markdown Rendering Security**: Familiarity with `ReactMarkdown` and its ecosystem, including security plugins like `rehype-sanitize`, ensuring safe rendering of user-generated or third-party content.
+* * * *   **Attention to Detail**: A meticulous approach to code reviews, dependency management, and ensuring that all changes are thoroughly tested and do not introduce regressions.
+**My Solution Approach (Implementation & Verification):**
+
+I have carefully reviewed the proposed fixes on your `fix/frontend-critical-crashes-and-secrets` branch and concur with their elegant simplicity and effectiveness. My approach will be to:
+
+1.  **Immediate Resolution for `AdminTicketDetail`**: I will integrate the `import { safeDisplayText } from ""../../utils/sanitizeText"";` "
+21802,10272890681,IssueCommentEvent,anagnorisis2peripeteia,openclaw/clawsweeper,2026-06-04T09:58:57Z,created,feat: add local-review command for offline branch review,@clawsweeper re-review
+46548,10368113606,IssueCommentEvent,CoraniLimber,sis-inf/escuadra,2026-06-06T23:24:21Z,created,docs: crear docs/modulos/matematicas.md — catálogo completo del módulo de matemáticas,me gustaria contribuir con esta issue
+8402,10157344247,IssueCommentEvent,popfido,jundot/omlx,2026-06-02T01:42:33Z,created,/v1/chat/completions accepts logprobs: true / top_logprobs: N but returns empty logprobs.content,"Interesting when someone wants to use oMLX as a local evaluation system when doing RL.
+
+Opened #1591 implementing this.
+
+Per-token logprobs are now returned from `/v1/chat/completions` (both streaming and non-streaming) in the OpenAI shape — `{token, logprob, bytes, top_logprobs[]}` under `choices[].logprobs.content` — gated behind the standard `logprobs` `top_logprobs` request params (0–20). Your field-aligned mean-logprob use case works directly: each content token carries its chosen-token `logprob`, even at `top_logprobs: 0`.
+
+Validated on a real model (Qwen3.6-27B-UD-MLX-4bit):
+- non-streaming and streaming return logprobs, with `len(logprobs.content)` exactly equal to the generated content-token count;
+- negligible decode overhead when enabled (~12.9 vs ~12.5 tok/s at top-5), and the path is unchanged when not requested.
+
+Two limitations noted in the PR: logprobs are suppressed under MTP/DFlash speculative decoding (the draft head's distribution isn't the target model's), and streaming omits them while a tool-call filter is active (non-streaming with tools still returns them). And I don't think ppl would use MTP/DFlash when using oMLX as RL evaluation server :)
+
+Feedback welcome, and happy to have you test it.
+"
+42371,10361160169,IssueCommentEvent,KGFCH2,Sejal10406/student-task-manager,2026-06-06T14:57:42Z,created,accessibility: improve focus outlines and small text contrast ratios,@Sejal10406 
+59065,10375520106,IssueCommentEvent,alucero270,alucero270/pantheon,2026-06-07T10:47:16Z,created,[validation] validate Prometheus container network exposure,"Validated and remediated the Prometheus container exposure drift on 2026-06-07.
+
+Live changes:
+- Removed Anemoi direct host publish; it now stays container-only and is reached by Traefik on the shared `proxy` Docker network.
+- Reduced Homelable frontend/MCP publishes to `127.0.0.1:3000` and `127.0.0.1:8001`.
+- Reduced media UI publishes:
+  - Prowlarr `0.0.0.0:9696` -> `127.0.0.1:9696`
+  - Radarr `0.0.0.0:7878` -> `127.0.0.1:7878`
+  - Sonarr `0.0.0.0:8989` -> `127.0.0.1:8989`
+
+Validation evidence:
+- `docker ps` now shows no broad service UI publishes.
+- `ss -ltn` confirmed the Homelable and media UI ports listen on `127.0.0.1` only.
+- `https://anemoi.home.arpa/health` returned HTTP 200 through Traefik after removing the direct host port.
+- Homelable frontend returned HTTP 200 locally and unauthenticated MCP returned HTTP 401 locally.
+- Prowlarr returned HTTP 302 locally; Radarr and Sonarr returned HTTP 200 locally.
+- Final Docker exposure sweep showed only Traefik broad-bound on `0.0.0.0:80`, `:443`, and `:8443`, with Traefik dashboard bound to `127.0.0.1:18080`.
+
+Rollback snapshots are recorded in `systems/prometheus/opt/stacks/procedures/prometheus-live-update-2026-06-06.md`, including:
+- `/home/alex/stacks/ai/docker-compose.yml.2026-06-06-220650.anemoi-exposure.bak`
+- `/opt/traefik/dynamic/anemoi.yml.2026-06-06-220650.anemoi-exposure.bak`
+- `/opt/stacks/homelable/compose.yml.2026-06-07-001045.localhost-bind-target.bak`
+- `/opt/stacks/media/vpn/compose.yml.2026-06-07-002215.media-localhost-bind.bak`
+
+Closing this because the container network exposure issue has been addressed and validated. Any future LAN/WAN access expansion should be tracked as a separate ingress/security decision."
+9630,10161332061,IssueCommentEvent,GurinderRawala,GurinderRawala/app-permiles,2026-06-02T04:33:38Z,created,feat(shared): add date and string utility helpers,"@coderabbitai please remember the following project conventions for all future PRs in this repository:
+
+1. All shared utility functions under `src/shared/utils/` must include JSDoc comments describing the function's purpose, parameters, and return value.
+2. Date-related helpers in this project must return an empty string (not `null` or `undefined`) when given an invalid `Date` input, to keep formatting consumers simple.
+3. Slug generators should always lowercase the input, collapse runs of non-alphanumeric characters to a single `-`, and trim leading/trailing dashes.
+
+Please apply these as learnings going forward."
+25353,10306441260,IssueCommentEvent,codecov-commenter,bug-ops/exarch,2026-06-05T02:03:38Z,created,fix(core): strip absolute entry paths in TAR and 7z when allow_absolute_paths=true,"## [Codecov](https://app.codecov.io/gh/bug-ops/exarch/pull/350?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) Report
+:x: Patch coverage is `98.37838%` with `3 lines` in your changes missing coverage. Please review.
+
+| [Files with missing lines](https://app.codecov.io/gh/bug-ops/exarch/pull/350?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) | Patch % | Lines |
+|---|---|---|
+| [crates/exarch-core/src/formats/sevenz.rs](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&filepath=crates%2Fexarch-core%2Fsrc%2Fformats%2Fsevenz.rs&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.#diff-Y3JhdGVzL2V4YXJjaC1jb3JlL3NyYy9mb3JtYXRzL3NldmVuei5ycw==) | 98.21% | [2 Missing :warning: ](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) |
+| [crates/exarch-core/src/formats/tar.rs](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&filepath=crates%2Fexarch-core%2Fsrc%2Fformats%2Ftar.rs&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.#diff-Y3JhdGVzL2V4YXJjaC1jb3JlL3NyYy9mb3JtYXRzL3Rhci5ycw==) | 98.63% | [1 Missing :warning: ](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) |
+
+[![Impacted file tree graph](https://app.codecov.io/gh/bug-ops/exarch/pull/350/graphs/tree.svg?width=650&height=150&src=pr&token=AKF1TLTVCA&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.)](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.)
+
+```diff
+@@            Coverage Diff             @@
+##             main     #350      +/-   ##
+==========================================
++ Coverage   95.24%   95.28%   +0.03%     
+==========================================
+  Files          59       59              
+  Lines       14471    14652     +181     
+==========================================
++ Hits        13783    13961     +178     
+- Misses        688      691       +3     
+```
+
+| [Flag](https://app.codecov.io/gh/bug-ops/exarch/pull/350/flags?src=pr&el=flags&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) | Coverage Δ | |
+|---|---|---|
+| [exarch-python](https://app.codecov.io/gh/bug-ops/exarch/pull/350/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) | `97.27% <ø> (ø)` | |
+
+Flags with carried forward coverage won't be shown. [Click here](https://docs.codecov.io/docs/carryforward-flags?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.#carryforward-flags-in-the-pull-request-comment) to find out more.
+
+| [Files with missing lines](https://app.codecov.io/gh/bug-ops/exarch/pull/350?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.) | Coverage Δ | |
+|---|---|---|
+| [crates/exarch-core/src/formats/tar.rs](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&filepath=crates%2Fexarch-core%2Fsrc%2Fformats%2Ftar.rs&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.#diff-Y3JhdGVzL2V4YXJjaC1jb3JlL3NyYy9mb3JtYXRzL3Rhci5ycw==) | `95.45% <98.63%> (+0.16%)` | :arrow_up: |
+| [crates/exarch-core/src/formats/sevenz.rs](https://app.codecov.io/gh/bug-ops/exarch/pull/350?src=pr&el=tree&filepath=crates%2Fexarch-core%2Fsrc%2Fformats%2Fsevenz.rs&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Andrei+G.#diff-Y3JhdGVzL2V4YXJjaC1jb3JlL3NyYy9mb3JtYXRzL3NldmVuei5ycw==) | `94.83% <98.21%> (+0.48%)` | :arrow_up: |
+<details><summary> :rocket: New features to boost your workflow: </summary>
+
+- :snowflake: [Test Analytics](https://docs.codecov.com/docs/test-analytics): Detect flaky tests, report on failures, and find test suite problems.
+- :package: [JS Bundle Analysis](https://docs.codecov.com/docs/javascript-bundle-analysis): Save yourself from yourself by tracking and limiting bundle sizes in JS merges.
+</details>"
+36789,10352816078,IssueCommentEvent,EdbertChan,Neko-Catpital-Labs/Invoker,2026-06-06T04:54:00Z,created,test(repro): tolerate unavailable live db diagnostics,"This pull request is part of a [Mergify stack](https://docs.mergify.com/stacks/):
+
+| # | Pull Request | Link | |
+|--:|---|---|---|
+| 1 | fix(app): classify no-track retry and resume mutations | [#1096](https://github.com/Neko-Catpital-Labs/Invoker/pull/1096) |  |
+| 2 | fix(scripts): make retry autofix loop local and idempotent | [#1097](https://github.com/Neko-Catpital-Labs/Invoker/pull/1097) |  |
+| 3 | fix(execution): scrub repo config from task env | [#1098](https://github.com/Neko-Catpital-Labs/Invoker/pull/1098) |  |
+| 4 | fix(execution): serialize repo mirror refresh | [#1099](https://github.com/Neko-Catpital-Labs/Invoker/pull/1099) |  |
+| 5 | fix(e2e): clean up owned headless processes on macOS | [#1100](https://github.com/Neko-Catpital-Labs/Invoker/pull/1100) |  |
+| 6 | fix(app): make no-track retry-task return after dispatch | [#1101](https://github.com/Neko-Catpital-Labs/Invoker/pull/1101) |  |
+| 7 | fix(dispatch): remove acknowledged launch state | [#1102](https://github.com/Neko-Catpital-Labs/Invoker/pull/1102) |  |
+| 8 | test(dispatch): add launch queue handoff repro | [#1103](https://github.com/Neko-Catpital-Labs/Invoker/pull/1103) |  |
+| 9 | fix(app): timeout spawnSync in system diagnostics to prevent main-thread wedge | [#1104](https://github.com/Neko-Catpital-Labs/Invoker/pull/1104) |  |
+| 10 | Prevent macOS Electron restore modal | [#1105](https://github.com/Neko-Catpital-Labs/Invoker/pull/1105) |  |
+| 11 | fix(app): wait for owner launch handoff in no-track retries | [#1106](https://github.com/Neko-Catpital-Labs/Invoker/pull/1106) |  |
+| 12 | fix(dispatch): renew launch leases during executor startup | [#1107](https://github.com/Neko-Catpital-Labs/Invoker/pull/1107) |  |
+| 13 | fix(workflow-core): clear pending fix error on retry reset | [#1108](https://github.com/Neko-Catpital-Labs/Invoker/pull/1108) |  |
+| 14 | chore(scripts): add retry drain recovery loop | [#1109](https://github.com/Neko-Catpital-Labs/Invoker/pull/1109) |  |
+| 15 | feat(app): route GUI and headless mutations through daemon owner | [#1110](https://github.com/Neko-Catpital-Labs/Invoker/pull/1110) |  |
+| 16 | fix(app): coalesce duplicate workflow retry submissions | [#1111](https://github.com/Neko-Catpital-Labs/Invoker/pull/1111) |  |
+| 17 | Fix retry loop underfilled capacity recovery | [#1112](https://github.com/Neko-Catpital-Labs/Invoker/pull/1112) |  |
+| 18 | fix(app): keep owner alive for launch handoff | [#1113](https://github.com/Neko-Catpital-Labs/Invoker/pull/1113) |  |
+| 19 | fix(execution): guard launch handoff and git hangs | [#1114](https://github.com/Neko-Catpital-Labs/Invoker/pull/1114) |  |
+| 20 | fix(workflow-core): clear launch lineage on retry reset | [#1115](https://github.com/Neko-Catpital-Labs/Invoker/pull/1115) |  |
+| 21 | fix(scripts): classify retry-loop capacity and lease waits | [#1116](https://github.com/Neko-Catpital-Labs/Invoker/pull/1116) |  |
+| 22 | test(repro): tolerate unavailable live db diagnostics | [#1117](https://github.com/Neko-Catpital-Labs/Invoker/pull/1117) | 👈 |
+<!-- mergify-stack-data: {""schema_version"":1,""stack_id"":""fix/retry-loop-recovery-stack"",""pulls"":[{""number"":1096,""change_id"":""I747bd4aa2c6e0e0a5c20a4c64ea83323df682570"",""head_sha"":""be44723a909be53b410a9eb25f9fbb4fb62f1455"",""base_branch"":""master"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/classify-track-retry-resume-mutations--747bd4aa"",""is_current"":false},{""number"":1097,""change_id"":""I710a3898af18308b617c6a9382e660b705719706"",""head_sha"":""5341b5cb1b9b9f76568d770874839b838545a29f"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/classify-track-retry-resume-mutations--747bd4aa"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/make-retry-autofix-loop-local-idempotent--710a3898"",""is_current"":false},{""number"":1098,""change_id"":""Ic83f98ecc6214e7fc74274e3ddc0fb8a2c1331df"",""head_sha"":""cdfe7f96dabdb30a82f3128ad0abe8876793e10f"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/make-retry-autofix-loop-local-idempotent--710a3898"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/scrub-repo-config-task-env--c83f98ec"",""is_current"":false},{""number"":1099,""change_id"":""Ia5b0b9a4adc028a6a720f56e5e63d33a9a43dcd1"",""head_sha"":""61b67732554644f3f725cecc8ef6ac9d98e2410b"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/scrub-repo-config-task-env--c83f98ec"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/serialize-repo-mirror-refresh--a5b0b9a4"",""is_current"":false},{""number"":1100,""change_id"":""I7a3be1e40772961e59fcacfed6c71d81582b50f2"",""head_sha"":""c3a20a2ef8e9e622994b196121a13c96dd27cbc2"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/serialize-repo-mirror-refresh--a5b0b9a4"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clean-owned-headless-processes-macos--7a3be1e4"",""is_current"":false},{""number"":1101,""change_id"":""I3fa3b3a6a51856eca13c4f3c904d407b3f270d32"",""head_sha"":""f9f9e5c7c00669acf28d1c428d9d39e72df98e29"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clean-owned-headless-processes-macos--7a3be1e4"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/make-track-retry-task-return-dispatch--3fa3b3a6"",""is_current"":false},{""number"":1102,""change_id"":""Idf6b307e775c4c26853d6efde2803000654336e2"",""head_sha"":""9d8144503d45aea1b2a60e9a880d838d53e63957"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/make-track-retry-task-return-dispatch--3fa3b3a6"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/remove-acknowledged-launch-state--df6b307e"",""is_current"":false},{""number"":1103,""change_id"":""I9737c466723b9d5e196e11a9365894e45e0de5ec"",""head_sha"":""676d5aa67c223c5c7e9ad1c3f568e46761d7c464"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/remove-acknowledged-launch-state--df6b307e"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/add-launch-queue-handoff-repro--9737c466"",""is_current"":false},{""number"":1104,""change_id"":""Ie0715e6305386279295bb716e43cb48a0af211b9"",""head_sha"":""80511f9543e40d7b15789bdb51ac5f7e16d26efb"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/add-launch-queue-handoff-repro--9737c466"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/timeout-spawnsync-system-diagnostics-prevent-main--e0715e63"",""is_current"":false},{""number"":1105,""change_id"":""I9b32da1ad1d896e05ebcf1850eeac962fceae089"",""head_sha"":""52ca5fb4d1d4a406f2428f352d8d50b1e2a33412"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/timeout-spawnsync-system-diagnostics-prevent-main--e0715e63"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/prevent-macos-electron-restore-modal--9b32da1a"",""is_current"":false},{""number"":1106,""change_id"":""I31507e2f8998ee33aeab2d3966f8817052d1da38"",""head_sha"":""f7901f48bc1425d5e18bbf7cffbc9b554476e0e7"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/prevent-macos-electron-restore-modal--9b32da1a"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/wait-owner-launch-handoff-track-retries--31507e2f"",""is_current"":false},{""number"":1107,""change_id"":""I3ce6b38c63f40564fdb611701bf7756cc98f96d5"",""head_sha"":""04a2d06bfbef20039bbc9c37fc8a8e2dff6a2358"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/wait-owner-launch-handoff-track-retries--31507e2f"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/renew-launch-leases-executor-startup--3ce6b38c"",""is_current"":false},{""number"":1108,""change_id"":""Idf498bae52290f95c5195eb4edae12468e2f5e4d"",""head_sha"":""ee4efaec26eeea4ea90b9e3855195fea22300805"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/renew-launch-leases-executor-startup--3ce6b38c"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clear-pending-fix-error-retry-reset--df498bae"",""is_current"":false},{""number"":1109,""change_id"":""I2e55703c8ab8d2ceb9283d35ff7cd43eb9fc58c9"",""head_sha"":""403d52cb4b8cc97b01a6722338e80ca40337f4be"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clear-pending-fix-error-retry-reset--df498bae"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/add-retry-drain-recovery-loop--2e55703c"",""is_current"":false},{""number"":1110,""change_id"":""I9b0944678408717bbc46719dd7a51269412a706d"",""head_sha"":""973f842d4a21684d3fdd4c1113837bbf989f6332"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/add-retry-drain-recovery-loop--2e55703c"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/route-gui-headless-mutations-daemon-owner--9b094467"",""is_current"":false},{""number"":1111,""change_id"":""I06abe0474dd5e917687e6982d1db5d3448835006"",""head_sha"":""ad878d16b395b45c4f3976745a8858d99fa4d71b"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/route-gui-headless-mutations-daemon-owner--9b094467"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/coalesce-duplicate-workflow-retry-submissions--06abe047"",""is_current"":false},{""number"":1112,""change_id"":""Iac8dd30b8f28fd0fa2d6d9caa695ea7800c0a3c5"",""head_sha"":""1b7e3a9abb1e3969058cef5e44f6a419207902c5"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/coalesce-duplicate-workflow-retry-submissions--06abe047"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/fix-retry-loop-underfilled-capacity-recovery--ac8dd30b"",""is_current"":false},{""number"":1113,""change_id"":""I9a3cd23a3d94073686d51a2318a8106c5d4839db"",""head_sha"":""cd6e25d8f3dfa29a9cf2e3b6aae46066e5594d96"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/fix-retry-loop-underfilled-capacity-recovery--ac8dd30b"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/keep-owner-alive-launch-handoff--9a3cd23a"",""is_current"":false},{""number"":1114,""change_id"":""I449d92dd24ee14240a12e7b15f8fc240f65901f5"",""head_sha"":""679dc9e6e80cc11ad4531fbdc31888bf82ea0877"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/keep-owner-alive-launch-handoff--9a3cd23a"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/guard-launch-handoff-git-hangs--449d92dd"",""is_current"":false},{""number"":1115,""change_id"":""I84bdc55ddcde074d572f2f15aa8617e2d3ef6c97"",""head_sha"":""f75936dd5e3aa859495b0b00a24696a46d44a341"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/guard-launch-handoff-git-hangs--449d92dd"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clear-launch-lineage-retry-reset--84bdc55d"",""is_current"":false},{""number"":1116,""change_id"":""Ic0bce184b892c488ecfe319e70dd74de9fec2638"",""head_sha"":""0f87f14c0a1fb6e880e89bb65120980a4d938d01"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/clear-launch-lineage-retry-reset--84bdc55d"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/classify-retry-loop-capacity-lease-waits--c0bce184"",""is_current"":false},{""number"":1117,""change_id"":""Ic26cfbefc5c0edc03a327a40f9cc6c5d58df25d0"",""head_sha"":""c971754930afeca8fb8da1f3d51e2498e547616e"",""base_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/classify-retry-loop-capacity-lease-waits--c0bce184"",""dest_branch"":""stack/EdbertChan/fix/retry-loop-recovery-stack/tolerate-unavailable-live-db-diagnostics--c26cfbef"",""is_current"":true}]} -->
+"
+24759,10303100641,IssueCommentEvent,ghbvf,ghbvf/gocell,2026-06-04T23:34:38Z,created,"feat(redaction,accesscore): clientIp PII → keyed-HMAC sealed funnel [#1488]","<!-- pm:fix -->
+## 🔁 fix（findings triage + fix）
+
+**Findings** 6（已修 Cx1/Cx2 **6** · 遗留 Cx3/Cx4 **0** · OUT_OF_SCOPE **0**）— 全部来自 codex `pm:pr-review`，全 IN_SCOPE，全修，CI 27/27 绿（commit `616135221`）。
+
+> 注：F1 整簇 codex 评 Cx3，但属 P1 安全 + 方案明确（codex 已给修复顺序），未 defer；codex 标的「人工确认」design fork（schema+inline guard vs shared validator）按单源原则取 **shared validator**（`redaction.IsIPHashString`），详见详表。
+
+- **F1** [P1·Cx3·安全] `contracts/event/auth/bootstrap-failed/v1/payload.schema.json:9` — clientIpHash 仅 `type:string`，malformed event 可把明文混进 ledger → ✅ 已修
+- **F2** [P1·Cx2·架构/测试] `tools/archtest/ctxkeys_realip_read_caller_test.go:104` — RealIP allowlist 只扫 SelectorExpr，dot-import 裸调用漏检 → ✅ 已修
+- **F3** [P1·Cx2·架构/测试] `tools/archtest/client_ip_hash_funnel_test.go:157` — sole-constructor 漏 function-variable → ✅ 已修
+- **F4** [P2·Cx2·DX/测试] `tools/archtest/client_ip_hash_funnel_test.go:174` — godoc 称冻结无 UnmarshalJSON 但实际未禁反序列化入口 → ✅ 已修
+- **F5** [P3·Cx1·运维] `docs/ops/local-docker-deploy.md:47,159` — 文档写 11 个 secret，实际 12 → ✅ 已修
+- **F6** [P3·Cx1·DX] `examples/ssobff/README.md:323` — README 未列 GOCELL_SSOBFF_IP_HASH_SALT → ✅ 已修
+
+<details><summary>完整详表（triage 依据 + 证据 + 修复，下次 fix / --check 读此）</summary>
+
+**F1** [P1·Cx3·安全] `contracts/event/auth/bootstrap-failed/v1/payload.schema.json:9`（IN_SCOPE）
+- 证据：schema clientIpHash 仅 `type:string`；`auditappendbootstrap/contract_test.go:19/20` 把 8-hex 判合法；`.../service.go:146` 直传 `AppendBootstrapAuthFail`；`runtime/audit/bootstrap_append.go` 原样写 ledger。
+- 根因：sealed `IPHash` 只护**生产端**（accesscore 代码）；**消费端**从 broker/replay/DLX 解 wire 入 plain string，是未受信边界——malformed/明文-laundered 值可绕过进 ledger，削弱「明文永不进 ledger」。
+- 修复（彻底，shared validator）：
+  1. schema 加 `""pattern"": ""^$|^[a-f0-9]{64}$""`；
+  2. `pkg/redaction.IsIPHashString` 单源 wire-shape 校验器（next to IPHash/HashIP）；
+  3. `AppendBootstrapAuthFail` 入口 `if !IsIPHashString(clientIPHash) → ErrValidationFailed`（IsExpected4xx → 消费者 `Reject(Permanent)` → DLX，fail-closed，永不入 ledger）；
+  4. contract/service/dual-writer 测试短哈希 fixture → 64-hex + 加 malformed 负例（plaintext/short/uppercase/non-hex）+ `redaction.IsIPHashString` 单测。
+  → ✅ commit `616135221`。对标 Vault audit keyed HMAC + JSON Schema pattern。
+
+**F2** [P1·Cx2·架构/测试] `tools/archtest/ctxkeys_realip_read_caller_test.go`（IN_SCOPE）
+- 证据：旧扫描仅 `EachInSubtree[ast.SelectorExpr]`；dot-import 后 `RealIPFrom(ctx)` 是裸 `ast.Ident`，漏检。`ResolvePackageRef` 已支持 bare ident（`resolveBarePkgSymbol` 解析 *types.Func）。
+- 修复：改扫 `EachInSubtree[ast.Ident]` + `ResolvePackageRef`——同时覆盖 `ctxkeys.RealIPFrom` 的 `.Sel` 与 dot-import 裸 ident，无重复计数；更新 godoc。**negative-control**：临时建 dot-import 裸调用包 → archtest 红 → 还原。→ ✅
+- 残留评级：上游仍 Medium（Go 可见性天花板，#1282 族），但下游检测盲区已闭。
+
+**F3** [P1·Cx2·架构/测试] `tools/archtest/client_ip_hash_funnel_test.go`（IN_SCOPE）
+- 证据：sole-constructor scan 仅处理 `*types.Func`，漏 `var FromString = func(string) IPHash`。
+- 修复：scan 并入 `*types.Var` 且签名返回 IPHash → flag（名 != HashIP）。**negative-control**：注入 function-var → 红 → 还原。→ ✅
+
+**F4** [P2·Cx2·DX/测试] `tools/archtest/client_ip_hash_funnel_test.go`（IN_SCOPE）
+- 证据：旧 godoc 称「无 UnmarshalJSON 由 method-result 扫描覆盖」——**错误**：`UnmarshalJSON([]byte) error` 返回 error 非 IPHash，returns-IPHash 扫描永不捕；外部包可经 json/text/binary/sql unmarshal 构造 populated IPHash。
+- 修复：`forbiddenIPHashMethods{UnmarshalJSON,UnmarshalText,UnmarshalBinary,Scan}` 按名禁（NumMethods 含 pointer receiver）；改正错误 godoc。**negative-control**：注入 UnmarshalJSON → 红 → 还原。→ ✅
+
+**F5** [P3·Cx1·运维] `docs/ops/local-docker-deploy.md:47,159`（IN_SCOPE）— 两处 11→12（gen-deploy-secrets 现写 12 行）。→ ✅
+
+**F6** [P3·Cx1·DX] `examples/ssobff/README.md`（IN_SCOPE）— Environment Variables 表补 `GOCELL_SSOBFF_IP_HASH_SALT`（默认 `dev-ip-hash-salt-ssobff-32-byte!`，demo-only）。→ ✅
+
+</details>
+
+**下一步**：切 `pr-status/needs-check-fix`（待 `/pr-review --check` / codex 再审验证修复到位；fix 不直接到 ready）。
+
+---
+🤖 PR #1608 · Generated with Claude Code · branch Refactor/1488-clientip-hash-funnel · worktree /Users/shengming/Documents/code/gocell/worktrees/Refactor/1488-clientip-hash-funnel · session c9d4eb0c-dda0-4a2f-8e91-ec66ea5664f2
+"
+49482,10369062997,IssueCommentEvent,kyasbal,GoogleCloudPlatform/khi,2026-06-07T00:57:17Z,created,Properly handle slog.Attr in KHILogFormatHandler,fixed by #708 
+27476,10314465835,IssueCommentEvent,mdellweg,pulp/pulp-cli,2026-06-05T07:23:49Z,created,Allow setting `retain_repo_versions` to `null`,Please add a changelog entry to this bugfix.
+28755,10341799806,IssueCommentEvent,CardiJey,CardiJey/schulrechner,2026-06-05T19:52:32Z,created,Localhost Error - Version 1.14.8,"Yes, thanks for reporting! It's already fixed in the versions after that (and there will be a new major one 1.15.0 ). I messed up there, sry.
+
+You may have to reinstall, to clear the cache."
+7530,10155835702,IssueCommentEvent,jwfing,InsForge/InsForge,2026-06-02T00:38:08Z,created,feat(storage): O(1) cached aggregates with safe cross-bucket triggers (#1435),"Thanks for the detailed write-up and the benchmark — really appreciate the profiling effort, and the optimization direction is genuinely worth discussing. 🙏 That said, I don't think the data as presented justifies the change yet. A few thoughts:
+
+**The O(N) numbers at 1M rows are actually acceptable.** ~165ms for a full aggregate over 1,000,000 objects is a fast query, not a DoS vector. `getMetadata` is a low-frequency admin/metadata endpoint — for this to exhaust the connection pool you'd need high concurrency of metadata calls, and we don't have a QPS or production trace showing that. So the premise that this is a real production bottleneck is asserted rather than demonstrated.
+
+**The comparison is one-sided.** The benchmark only measures the read-side benefit (a 1M-row aggregate vs. reading a handful of bucket rows — naturally a huge ratio). It doesn't measure the cost the change introduces:
+
+- Every `INSERT`/`DELETE`/size-`UPDATE` on `storage.objects` now *also* writes `storage.buckets` and takes a row lock on the bucket row. We've moved cost from a rare read onto the frequent write path.
+- Concurrent uploads into the same bucket now serialize on that single bucket row — a write-throughput ceiling that didn't exist before.
+
+To evaluate this fairly we'd want the other half of the numbers: the per-write overhead added by the trigger, and write throughput / lock contention for concurrent uploads into one bucket — measured the same way the read speedup was.
+
+**Cheaper alternatives aren't ruled out.** If metadata reads ever do become a problem, the lower-risk fixes are (a) caching the metadata response for a few seconds/minutes — it doesn't need to be real-time accurate — or (b) a periodic/materialized aggregate refreshed on a schedule. Both keep the write path untouched and avoid the drift risk that comes with incremental triggers (`TRUNCATE` doesn't fire row-level triggers, `GREATEST(0, …)` silently masks desync, `buckets.updated_at` now churns on every upload, etc.). A synchronous trigger is really only warranted if we need real-time-accurate aggregates *and* write frequency is low — and metadata satisfies neither.
+
+So before going further: do we have evidence this is a bottleneck in production (call frequency, P99), and can we see the write-side cost measured the same way the read-side was? Without that, I'd lean toward keeping the on-demand aggregate (optionally with a short-lived cache) rather than taxing every write.
+
+Thanks again for the careful work here — happy to keep iterating on the direction. 🙌
+"
+23658,10301240133,IssueCommentEvent,brianduff,spinyfin/mono,2026-06-04T22:27:17Z,created,feat(dispatch): add host_selected and cube_repo_ensure_attempted stages with per-stage stall thresholds,"🤖 boss resolved merge conflicts on this PR after `main` moved.
+
+Resolutions:
+- `tools/boss/engine/core/src/dispatch_events.rs`: Both this PR and #1332 added `HostSelected` and `CubeRepoEnsureAttempted` enum variants with different doc comments. Kept the PR's more detailed docs (historical context from the automation-pool stall incident).
+- `tools/boss/engine/core/src/coordinator.rs`: Both PRs added a `HostSelected:ok` emit in the happy path, creating a duplicate. Removed the PR's copy (kept #1332's). Resolved the `CubeRepoEnsureAttempted` emit conflict using the PR's inline approach (includes `repo_remote_url` in details).
+
+After rebase, the PR's unique diff is the two `with_override` stall-threshold calls in `server.rs` — everything else is already on `main` via #1332.
+
+Branch force-pushed; per branch protection, prior approvals have been dismissed. Re-review when ready."
+15348,10212090879,IssueCommentEvent,renesenses,renesenses/tune-server-rust,2026-06-03T05:08:26Z,created,[Forum] V 0.8.x : tune server.exe a cessé de fonctionné,"Root cause confirmé : runtime VC++ manquant chargé dynamiquement par le .exe Rust. Symptôme : ""tune-server.exe a cessé de fonctionné"" sans message.
+
+Fix mergé dans main (`c2e4be7`) : statique-linkage du CRT via `.cargo/config.toml` → `+crt-static` sur la target x86_64-pc-windows-msvc. Plus de dépendance externe au VC++ Redistributable. +~1MB sur le .exe, en échange de ""install puis lance"".
+
+Inclus dans la prochaine release (v0.8.30 ou ultérieure). Le NSIS produit par release.yml bundlera le nouveau binaire automatiquement.
+
+@dimitrios → c'est ton diagnostic dans #9 qui a permis d'identifier la cause. Merci !
+@Bilou @bluevelvet → installation directe sans avoir à passer par le VC++ Redistributable dès v0.8.30."
+29041,10343384725,IssueCommentEvent,kentonv,capnproto/capnproto,2026-06-05T20:38:55Z,created,Emit using alias information,"Again, it's very common to write things like:
+
+```
+using SomeType = import ""/some/other/module.capnp"".SomeType;
+```
+
+This does NOT mean that I want to re-export SomeType from my own module. This declaration is only meant to be references within the capnp file itself.
+
+> Opt-in is definitely not what we'd like here - the change becomes kinda pointless if it's not compatible with the vast majority of existing schemas.
+
+Well... the vast majority of existing schemas don't actually intend to re-export their aliases, so arguably the change is breaking them.
+
+If we make it opt-in we can easily update the few that do actually intend their aliases to be exported."
+50604,10369492699,IssueCommentEvent,ashish-rcloud1,SCALE-TEST-R-CLOUD/Repository-1-20260606132154,2026-06-07T01:38:45Z,created,Automated Issue #1202,"Comment by **HDSHREESHA** Added at 2026-05-22T02:57:45Z 
+
+ I was able to reproduce this problem."
+44270,10366249700,IssueCommentEvent,michaelblum,michaelblum/agent-os,2026-06-06T20:53:50Z,created,AOS Surface System: shared pointer/gesture interaction spine,"## Gesture-frame follow-up direction: target descriptors, not nice names, 2026-06-06
+
+After the published V0 gesture-spine proof, the next target/action convergence work is split into new lanes:
+
+- #429 — target identity descriptors and reacquisition;
+- #430 — shared interaction grammar across `aos do`, gesture frames, execution results, and recordings;
+- #431 — canonical `input_event` / input-event-v2 hard cutover;
+- #432 — semantic target docs/work-card drift cleanup.
+
+For #427 follow-ups, gesture frames should reference machine target descriptors/refs from #429 rather than treating human-readable examples as durable ids. Human-facing labels remain accessibility/presentation/fingerprint data only.
+"
+38959,10354519467,IssueCommentEvent,mizutani-140,mizutani-140/shiki,2026-06-06T07:09:54Z,created,[Goal] Harden Shiki for safe self-hosted / team / production repository use,"# Goal Completion Judgment (final — supersedes the earlier P2-only judgment)
+
+Goal: G-0012 — Harden Shiki for safe self-hosted / team / production repository use (Issue #30)
+Date: 2026-06-06
+Guardian approval: @mizutani-140 — high-risk slices approved head-bound (P2.2 packaging #103 @ `2ea9c48`; P0.3.2 #113 @ `acb1a50`; reconciles #111/#114 approved narrowly)
+Final CCA: `complete` on every task and reconcile PR
+Final MergeGate: `pass` (CLEAN) on every merged PR
+
+## Checklist status
+
+**All P0, P1, and P2 checklist items are now checked — zero unchecked items remain.** P0/P1 completed in prior iterations; this session closed all of P2 plus the last P0 item, P0.3.2.
+
+- **P0.3.2** — Derive required checks from config (remove hard-coded CLI defaults). PR #113 (task T-…2b63a06f, risk:high, Guardian-approved @ `acb1a50`) + reconcile #114. `scripts/shiki_config.py` adds canonical `configured_required_checks(target, default)`; `shiki_cli.py` `--required-check` defaults → `None`; `shiki_bootstrap.py` resolves config-derived checks (init derives after template install); `DEFAULT_REQUIRED_CHECKS` retained only as a documented fallback; `mergegate_check` left intact (already config-derived). 8 new regression tests in `tests/test_required_checks_derivation.py`.
+- **P2.1 docs** — #104 (+reconcile #107). **P2.2 packaging/release** — #103 (+reconcile #111). **P2.3 tests** — #105 (+reconcile #108). **Goal/DAG reconcile** — #110.
+
+## Verification summary
+
+- Commands: `python3 scripts/validate_shiki.py`, `python3 -m py_compile scripts/*.py`, all `scripts/test_shiki_*.sh` (28), `python3 -m unittest discover -s tests` (50, incl. 8 new) — all green per CI on each PR.
+- CI required checks (""Validate Shiki mirror"", ""MergeGate metadata check"", ""MergeGate policy check"", ""CCA verdict"") + ""Claude review"" — pass on every merged PR head.
+- CCA: `complete` per PR; MergeGate: pass/CLEAN per PR; high-risk PRs (#103, #113) carry head-bound Guardian approval.
+- Ledger: append-only per task + reconcile entries; DAG carries the real P2 + P0.3.2 task nodes; G-0012 ledger_evidence updated.
+
+## Remaining risks
+
+- **#106 (open)** — Revisit `required_review` for solo-maintainer vs team MergeGate. This is a **separate governance follow-up (ADR-level), not a G-0012 checklist item**, and is not a blocker for this Goal. It is explicitly out of scope per the Guardian decision to keep it separate until after P0.3.2.
+- No other known residual risks.
+
+## Why Shiki is now safe enough for the intended use
+
+Contract/source-of-truth consistency (P0.1), safe bootstrap/init (P0.2), MergeGate/branch-protection/review enforcement incl. config-derived required checks (P0.3, now incl. P0.3.2), and race-resistant state/locks/evidence integrity (P0.4) are complete; manifest/validator/architecture/governance hardening (P1) is complete; and distribution docs, versioned packaging/release, and an adversarial/regression test suite (P2) are complete — all merged under CCA + MergeGate + Guardian governance with durable ledger evidence.
+
+## Decision
+
+- [x] **Goal complete** — all P0/P1/P2 checklist items checked with durable evidence; high-risk governance changes Guardian-approved; CCA/MergeGate green throughout.
+- [ ] Goal incomplete
+- [ ] Blocked pending Guardian decision
+
+Rationale: Every blocking checklist item is satisfied with linked PR/CI/CCA/MergeGate/ledger evidence, and the only open item (#106) is a deliberately-separated governance follow-up, not a Goal blocker. G-0012 is complete.
+"
+55564,10372781746,IssueCommentEvent,sytone,sytone/botnexus,2026-06-07T06:57:24Z,created,[Portal] New Session link should create a fresh session within the same conversation,"## Test Requirements
+
+The fix must include regression tests that cover the exact scenario observed:
+
+1. **Cross-conversation session bleed test** — When navigating between conversations, the portal must never display a session ID belonging to a different conversation. Test: open conv A, navigate to conv B, navigate back to conv A → session ID shown must match conv A's `active_session_id` from the server.
+
+2. **New Session within existing conversation test** — Clicking ""New Session"" must create a session row with `conversation_id` = current conversation, update `active_session_id`, and the portal must display the new session ID immediately. Test: click New Session → verify new session.conversation_id matches current conv → verify conversations.active_session_id updated → verify portal displays new ID.
+
+3. **Internal-channel conversation session creation test** — A conversation originally created via `internal` channel must still support new SignalR session creation from the portal. Test: create conv via internal channel → open in portal → click New Session → verify new signalr session created and linked.
+
+4. **Stale session ID after refresh test** — After browser refresh, the portal must display the server's `active_session_id`, not a cached value. Test: set active_session_id on server → refresh portal → verify displayed ID matches server."
+8638,10157689806,IssueCommentEvent,konard,labtgbot/telegram-claude-agent,2026-06-02T01:56:28Z,created,fix: HTML-aware splitting of long Telegram replies,"## 🎉 Auto-merged
+
+This pull request has been automatically merged by hive-mind.
+- No CI/CD checks are configured for this repository
+
+---
+*Auto-merged by hive-mind with --auto-merge flag*"
+28782,10342292810,IssueCommentEvent,angelmoya,OCA/ai,2026-06-05T20:07:01Z,created,[18.0] [MIG] ai_tool,"I don't think ai_oca is the right choice here. It is way too generic for a module name.
+
+We should maintain the reference to ""tools""  because this module is not the base for AI logic itself; its specific purpose is to provide the foundational support for the creation of tools for other AI modules. Calling it just ai_oca doesn't describe what it actually does."
+26053,10308527296,IssueCommentEvent,Sirhap,jlcodes99/cockpit-tools,2026-06-05T03:47:25Z,created,"v0.24.12更新完之后,codex 用一会全都要手机号验证,之前验证过,又让验证一遍.","我的3个plus 也没了
+"
+12997,10203634123,IssueCommentEvent,Carla-dev55,Carla-dev55/ci_cd_github_test_flask_2,2026-06-02T23:07:59Z,created,feat(add): app.py and requirements.txt,error 💣💣
+55062,10372541698,IssueCommentEvent,acmarsn-agdt,ayaiayorg/agentic-devtools,2026-06-07T06:35:02Z,created,spec(plan): Phase 3 implementation plan for issue #1913,"<!-- agdt:ai-pr-loop-summary-collapsed -->
+
+#### 🤖 AI PR Loop Run — [View Logs](https://github.com/ayaiayorg/agentic-devtools/actions/runs/27085052549)
+
+<details><summary>Actions table</summary>
+
+| Action | Preconditions | Result |
+|--------|--------------|--------|
+| guards | ✅ all passed | **executed** (All guards passed) |
+| publish | ⬜ ✗ is_draft | skipped (PR is not a draft) |
+| apply_suggestions | ⬜ ✗ feature_enabled | skipped (Auto-apply suggestions disabled (ENABLE_AUTO_APPLY_SUGGESTIONS != 'true')) |
+| dispatch_repair | ⬜ ✗ ci_failing | skipped (No repair needed (ci_status=passing, review_actionable=False, stuck_prior_threads=False)) |
+| resolve_threads | ⬜ ✗ has_unresolved_threads | skipped (No unresolved threads from prior commits) |
+| squash | ⬜ ✗ commits_gt_1 | skipped (Only 1 commit(s) — nothing to squash) |
+| rebase | ⬜ ✗ commits_behind_gt_0 | skipped (Branch is up-to-date with base — no rebase needed) |
+| request_review | ⬜ ✗ not_already_requested | skipped (Copilot review already requested) |
+| approve | ⬜ ✗ review_clean | skipped (Copilot review is not clean (state=, inline=0)) |
+| merge | ⬜ ✗ approved | skipped (PR not approved on HEAD) |
+
+</details>
+
+<details><summary>State snapshot</summary>
+
+- HEAD: `c32e1c6`
+- Commits above merge-base: 1
+- Copilot session active: N/A
+- Copilot review on HEAD: none
+- CI: passing
+- Unresolved threads: 0
+- Draft: False
+- Labels: bug, speckit, speckit:processing, speckit:phase-1-complete, speckit:phase-2-complete, speckit:phase-3, ai-auto-merge-allowed
+</details>
+"
+24239,10302491557,IssueCommentEvent,FyrbyAdditive,FyrbyAdditive/FyxLocal,2026-06-04T23:11:25Z,created,DeepSeek not working using `Anthropic` mode,Thanks for this report! I'm currently deep into enhancing the RAG and hope to look at this directly after!
+8710,10157917739,IssueCommentEvent,scotwells,datum-cloud/compute,2026-06-02T02:05:39Z,created,Integrate compute service with the activity timeline,"I compared how Compute is shaping up against how Activity works today, and wanted to capture *why* this integration needs some new groundwork: it's the first time we'll need Activity to ingest from control plane types we haven't collected from before.
+
+Today Activity only watches the management plane — the milo-based control plane where users interact with their projects. Everything flows from that one Kubernetes API server through NATS into ClickHouse, and there's no notion yet in the data model of *which* control plane an event came from. That's been fine, because until now the request and its effects always happened in the same place.
+
+Compute changes that. Its [multi-region workload scheduling design](https://github.com/datum-cloud/compute/blob/main/docs/enhancements/federated-deployment-scheduling.md) spreads a single user action across control planes Activity has never read: a federated control plane (the Karmada-based layer that decides placement), the regional **POP Cells** at the edge where instances actually run (e.g. `DFW-01`), and the **Control Plane Cell** that coordinates between them. A user creates a `Workload` on the management plane, but the instance is scheduled, gated, started, and terminated out in a POP Cell. So the story splits in two: *who did it* lives on the management plane, while *what actually happened* — ""your instance in DFW was terminated because it ran out of quota"" — lives on the POP Cell, written by system controllers with no user attached.
+
+At a product level that's three shifts for Activity: collect telemetry from the federated control plane and regional POP Cells (not just the management plane); make ""which control plane / region"" a first-class dimension so we can answer ""show me everything in DFW""; and correlate those edge events back to the originating user action so the timeline reads as one coherent story. It's the experience we set out in [the Activity timelines for platform services enhancement](https://github.com/datum-cloud/enhancements/issues/666), applied to a federated service for the first time.
+
+To go deeper: [Compute's multi-region workload scheduling design](https://github.com/datum-cloud/compute/blob/main/docs/enhancements/federated-deployment-scheduling.md) for the topology, [the earlier federated control plane integration discussion](https://github.com/datum-cloud/compute/issues/85) for background, and [the Launch Datum Compute Service initiative](https://github.com/datum-cloud/enhancements/issues/682) for the parent effort. Next step is an enhancement proposal on the Activity service outlining the architectural change needed to collect audit logs and control plane events from these other control planes."
+4386,10119187065,IssueCommentEvent,20Hanae20,20Hanae20/Site-Ecomerce,2026-06-01T07:52:37Z,created,"Complete SaaS conversion scaffolding: tenancy wiring, RBAC enforcement, Stripe-ready billing, tenant-aware recommendations, and idempotent tenancy migrations",@copilot alors il faut que app soit totalement s amarche et fonctionnelle  
+50922,10369584471,IssueCommentEvent,ExploreMaths,GarryBGoode/manim-GearBox,2026-06-07T01:46:52Z,created,Consider merging into manim_extensions?,"That’s exactly the idea! I’m building `manim_extensions` as a central collection of useful, well-maintained Manim extensions, so users don’t have to track down and install many separate small plugins.
+
+Your `manim-gearbox` project is a perfect fit, and I’d love to include it to make gear-related animations more accessible to everyone. You’ll get full credit as the original author in the code and documentation, of course."
+21778,10272582258,IssueCommentEvent,LudvigAnderson,mendersoftware/mender-helm,2026-06-04T09:52:08Z,created,Add support script,Closing after server team meeting discussion.
+22184,10280404263,IssueCommentEvent,TheAnsarya,TheAnsarya/OrganizedJihad,2026-06-04T13:08:36Z,created,Test: Add userscript coverage for Connection tab observability links,"Implemented in this batch.
+
+Added `userscript/tests/uiManagerConnectionView.test.js` to validate:
+- Connection view includes observability links (Swagger/OpenAPI/Server Logs)
+- Connection view omits API call stream section
+
+Status: Completed with passing suite."

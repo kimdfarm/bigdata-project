@@ -158,7 +158,7 @@ else:
                 subset_df = raw_df[raw_df['repo_name'].isin(selected_repos)]
                 
                 # 4. Boxplot 시각화
-                st.markdown(f"### 📦 선택된 {len(selected_repos)}개 저장소의 이슈 제목 길이 분포")
+                st.markdown(f"### 📦 선택된 저장소의 이슈 제목 길이 분포")
                 
                 plot_df = subset_df.copy()
 
@@ -269,12 +269,21 @@ else:
                     # 4. 분석 결과 그래프
                     # 명확하게 비교하고 결측치까지 처리
                     df['Status'] = df['merged'].map({True: 'Merged', False: 'Not Merged'}).fillna('Not Merged')
-                    
+                    repo_order = selected_repos.tolist()
                     # 그래프 시각화 로직
-                    fig1 = px.bar(df_filtered.groupby(['base_repo', 'Status']).size().reset_index(name='Count'), 
-                                x='base_repo', y='Count', color='Status', barmode='group', title="저장소별 병합 상태")
-                    fig2 = px.bar(df_filtered.groupby(['base_repo', 'action']).size().reset_index(name='Count'), 
-                                x='base_repo', y='Count', color='action', barmode='group', title="저장소별 PR 액션")
+                    fig1 = px.bar(
+                        df_filtered.groupby(['base_repo', 'Status']).size().reset_index(name='Count'), 
+                        x='base_repo', y='Count', color='Status', barmode='group', 
+                        title="저장소별 병합 상태",
+                        category_orders={'base_repo': repo_order} # 추가
+                    )
+
+                    fig2 = px.bar(
+                        df_filtered.groupby(['base_repo', 'action']).size().reset_index(name='Count'), 
+                        x='base_repo', y='Count', color='action', barmode='group', 
+                        title="저장소별 PR 액션",
+                        category_orders={'base_repo': repo_order} # 추가
+                    )
                     
                     st.plotly_chart(fig1, use_container_width=True)
                     st.plotly_chart(fig2, use_container_width=True)
@@ -316,20 +325,21 @@ else:
                 st.markdown("### 🤖 리뷰어 유형 분석")
                 review_counts = df_filtered.groupby(['repo_name', 'is_bot']).size().reset_index(name='Review_Count')
                 review_counts['Type'] = review_counts['is_bot'].map({True: 'Bot', False: 'Human'})
-                fig1 = px.bar(review_counts, x='repo_name', y='Review_Count', color='Type', barmode='stack')
+                repo_order = df_filtered['repo_name'].unique().tolist()
+                fig1 = px.bar(review_counts, x='repo_name', y='Review_Count', color='Type', barmode='stack',category_orders={"repo_name": repo_order})
+                
+                
                 st.plotly_chart(fig1, use_container_width=True)
                 
                 # 3. [섹션 2] 파일 경로 깊이 및 타입별 리뷰 분포
                 st.markdown("### 📂 파일 경로 깊이 및 타입별 리뷰 분석")
                 # Boxplot: 저장소별로 path_depth를 시각화하여 리뷰가 주로 어느 깊이(구조)에서 일어나는지 확인
                 fig2 = px.box(
-                    df_filtered, 
-                    x='repo_name', 
-                    y='path_depth', 
-                    color='file_ext',
-                    title="저장소별 파일 경로 깊이(Depth) 및 확장자 분포",
-                    points="all"
-                )
+    df_filtered, x='repo_name', y='path_depth', color='file_ext',
+    title="저장소별 파일 경로 깊이(Depth) 및 확장자 분포",
+    points="all",
+    category_orders={"repo_name": repo_order} # 동일한 순서로 고정
+)
                 fig2.update_layout(xaxis_tickangle=-45, yaxis_title="경로 깊이 (Depth)")
                 st.plotly_chart(fig2, use_container_width=True)
             # 실행

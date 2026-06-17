@@ -1,0 +1,101 @@
+,id,type,actor_login,repo_name,created_at,action,issue_title,issue_state,issue_comments
+108850,10380647969,IssuesEvent,suhas-r-cloud,SCALE-TEST-R-CLOUD/Repository-1-20260607134353,2026-06-07T16:51:58Z,labeled,Automated Issue #641,open,0
+54638,10347087501,IssuesEvent,Sunnshiine,Sunnshiine/workout-app,2026-06-05T22:51:15Z,unlabeled,Normalize UI fixtures and shared helpers after XCTest pruning,open,0
+60423,10349568826,IssuesEvent,MScottAdams,deftai/directive,2026-06-06T01:05:57Z,labeled,"feat(agents,setup): configurable agent autonomy level — default to analysis/plan, mutate only when explicitly requested or autonomy permits",open,0
+112018,10384119111,IssuesEvent,suhas-r-cloud,SCALE-TEST-R-CLOUD/Repository-1-20260607134353,2026-06-07T20:59:31Z,opened,Automated Issue #1555,open,0
+80918,10365399414,IssuesEvent,avidrucker,avidrucker/lccjs,2026-06-06T19:42:49Z,labeled,bug(showcase): CM6 line numbers not visible on GitHub Pages,closed,0
+69964,10353596328,IssuesEvent,squne121,squne121/loop-protocol,2026-06-06T05:57:12Z,labeled,実装: docs/dev/agent-runtime-ops.md に network-only auto allow の推奨設定を追記する,open,0
+88112,10368506657,IssuesEvent,dev-sohyeon,cse-project2-lg/embedded,2026-06-07T00:04:16Z,closed,[Feature] 센서 데이터 MQTT Publish 구현,closed,0
+53401,10346433008,IssuesEvent,aelassas,aelassas/servy,2026-06-05T22:23:13Z,assigned,[Tests] ConfigParserTests.cs — ParseInt tests named '...WithoutLogging' and '...AndLogsWarning' never verify any logging,open,0
+33004,10253493440,IssuesEvent,cehfisher,cehfisher/a11y-scanner-demo,2026-06-03T23:06:56Z,labeled,[Accessibility scan] Elements must meet minimum color contrast ratio thresholds,open,0
+109505,10381940379,IssuesEvent,SyncNowUser,Bank-Demo-Organization/BankCustomers,2026-06-07T18:21:18Z,opened,AIIngestPS_GitHub_c7db188d,closed,0
+38256,10270150812,IssuesEvent,zombieJ,ant-design/ant-design-mobile,2026-06-04T08:39:41Z,closed,Swiper组件希望每个Swiper.Item可以根据内容高度自适应,closed,6
+30113,10241876064,IssuesEvent,nyxsky404,piyushdotcomm/Editron,2026-06-03T18:27:16Z,opened,[Bug]: CodeLine component uses dangerouslySetInnerHTML without HTML entity escaping — breaks display for JSX/typed code,open,3
+33264,10253756510,IssuesEvent,ElectBitcoin,ElectBitcoin/ElectBitcoin,2026-06-03T23:15:32Z,opened,Add New positive record for NY-Kirsten Gillibrand,open,0
+34274,10254430055,IssuesEvent,MaxQian888,MaxQian888/cognia-next,2026-06-04T00:20:57Z,closed,M4.8 — Mobile-friendly settings tabs (Twin/MCP/Connectors/Backup) — verify all server features manageable from phone,closed,0
+101239,10373025794,IssuesEvent,theekrystallee,hashgraph/hedera-docs,2026-06-07T07:18:03Z,closed,docs: add landing page for tabs in dev branch,closed,1
+35913,10259674699,IssuesEvent,heni02,matrixorigin/matrixone,2026-06-04T03:06:55Z,unassigned,"[Bug]: CASE WHEN 在 DECIMAL(23,2) 与 DECIMAL(9,5) 混用时，ELSE 分支结果被放大 10⁵ 倍",open,1
+53797,10346724645,IssuesEvent,Luis-tech-AI,so1unp/lab04-ws,2026-06-05T22:35:11Z,assigned,Logica entidades,open,0
+114970,10385344790,IssuesEvent,abhinaykrupa,abhinaykrupa/vertical-procurement-toolkit,2026-06-07T22:38:39Z,opened,Cloud-hosted open-core free tier (PostHog-model monetization path),open,0
+75981,10356631659,IssuesEvent,Jefferson49,Jefferson49/webtrees-API,2026-06-06T10:01:32Z,opened,"Expiration time of Swagger access token is limited to 1 hour. After 1 hour, API access is denied",open,0
+24471,10208444195,IssuesEvent,wscurran,NVIDIA/NemoClaw,2026-06-03T02:24:57Z,labeled,"[WSL2][Sandbox] openshell-docker-gateway host daemon shuts down on idle, breaks subsequent install.sh upgrade backup step",closed,0
+29687,10238873778,IssuesEvent,JAVA-LW,taichuy/1flowbase,2026-06-03T17:35:11Z,labeled,[验收中]调整 warning/advisory 与 required 门禁判定,open,0
+107872,10377312403,IssuesEvent,servathadi,Mumega-com/mcpwp,2026-06-07T12:50:10Z,closed,GTM: replace site-level update override with durable Freemius release flow,closed,1
+64151,10351569150,IssuesEvent,mihaamiharu,mihaamiharu/playwright-e2e,2026-06-06T03:12:14Z,closed,e2e-ISSUE-1780715513276-8400b1 [294b24c7],closed,0
+82140,10366149238,IssuesEvent,sbranham314,strata-reports-ai/orchestrator-strata-reports,2026-06-06T20:45:29Z,unlabeled,Bug: POST /api/reports/generate returns HTTP 500 for reportType=monthly_owner after PR #30 — invalid types now rejected (good) but monthly_owner code path broken,open,0
+24091,10208004325,IssuesEvent,NachoVazquez,naxodev/oss,2026-06-03T02:08:44Z,labeled,nx-cloudflare: add executor tests and richer template tests,open,0
+109133,10381215185,IssuesEvent,adhie272,ghea-creator/SIMHPSK-kelompok-3,2026-06-07T17:34:15Z,unassigned,Integrasi API & Error Handling Global FE,open,0
+12598,10156431365,IssuesEvent,ben-milanko,anthropics/claude-code,2026-06-02T01:04:20Z,opened,Remote-agent / routine GitHub PR subscriptions don't deliver pull_request_review or pull_request_review_comment events,open,1
+34655,10254443620,IssuesEvent,ebanerjeeTT,tenstorrent/tt-auto-triage,2026-06-04T01:00:02Z,opened,[00002] Error response from daemon: failed to resolve reference '': unexpected status from HEAD request: 401 Unauthorized,open,0
+77347,10357822174,IssuesEvent,scottlz0310-user,scottlz0310/thread-owl,2026-06-06T11:42:55Z,labeled,Add MCP Streamable HTTP transport,open,0
+73618,10354871247,IssuesEvent,ashmitarcloud,SCALE-TEST-R-CLOUD/Repository-1-20260606030328,2026-06-06T07:37:34Z,opened,Automated Issue #4518,open,0
+19404,10196027262,IssuesEvent,rsgigsbe,quadriga-dk/Text-Fallstudie-1,2026-06-02T19:42:02Z,opened,"6.2.5. Issue on page /corpus_processing/corpus-processing_nlp-annotation.html | Unterschied Worthäufigkeit (lokal, Windows)",open,0
+31243,10250284063,IssuesEvent,dnsquared,baremetallabs-ai/shipper,2026-06-03T21:33:29Z,unlabeled,Consolidate Codex headless launch arguments,closed,7
+23212,10206894968,IssuesEvent,cislunarspace,cislunarspace/transfer-orbit-design,2026-06-03T01:26:36Z,opened,fix(transfers): optimize_leo_to_dro / optimize_geo_to_dro 接入显式输入契约,open,0
+14483,10159612628,IssuesEvent,Tushar-sonawane06,Tushar-sonawane06/UI-Verse,2026-06-02T03:19:22Z,labeled,Fix the digital product,open,0
+51849,10342873044,IssuesEvent,gaplogic,gaplogic/gaplogic.com,2026-06-05T20:24:04Z,labeled,🛑 Pablo Furchi is down,open,0
+61627,10350114782,IssuesEvent,RaphaelThineyUE,RaphaelThineyUE/rad-report-ai,2026-06-06T01:37:21Z,labeled,MIG-149: Manual QA checklist,open,0
+78435,10360819904,IssuesEvent,marctjones,marctjones/sred,2026-06-06T14:38:39Z,opened,Find / replace with match highlighting,open,0
+102280,10373621349,IssuesEvent,akhil-egov,akhil-egov/chad-polio-dashboard,2026-06-07T08:06:22Z,labeled,"Architecture: fix Map tab — render inside tab panel, add URL persistence",open,0
+95214,10370392045,IssuesEvent,PurHur,PurHur/php-compiler,2026-06-07T03:00:50Z,labeled,"Stdlib: DateException base class — Exception-branch date hierarchy root missing (ext/date/php_date.h, pairs #6048)",open,0
+48537,10312961923,IssuesEvent,flashlight8898,LingGuoAI/LingGuo-Drama,2026-06-05T06:37:22Z,opened,改进,open,0
+32792,10253138974,IssuesEvent,DevGobbi,LuisPerossi/instagram-volume-slider-and-scrubber,2026-06-03T22:55:36Z,closed,Receba,closed,0
+7788,10123639152,IssuesEvent,alex-dabija,giantswarm/roadmap,2026-06-01T09:48:12Z,opened,E2E tests need to pass,open,0
+114582,10385183362,IssuesEvent,loning,ChronoAIProject/fkst-packages,2026-06-07T22:24:35Z,unlabeled,冷重启 marker-lag 退避耗尽→dead_letter 无消费者丢事件→no-consensus 评审管线停滞不自愈,open,3
+63163,10351028573,IssuesEvent,diogocoutinho,arqel-dev/arqel,2026-06-06T02:34:42Z,labeled,Bulk CSV export produces an empty file and the result is never retrievable,open,0
+105266,10375063584,IssuesEvent,itismyfield,itismyfield/AgentDesk,2026-06-07T10:09:49Z,closed,릴레이 입력: 긴 턴 중/직후 follow-up 입력이 45s readiness timeout 에러 — 큐 defer 정책 누락(A) + idle false-busy 판정(B) 분리 진단·수정,closed,0
+58003,10348683235,IssuesEvent,atxinbao,atxinbao/MTPRO,2026-06-06T00:13:17Z,labeled,Migrate DataClient / DataEngine / Cache implementation ownership out of Core / Adapters / Runtime,closed,0
+250,10108954031,IssuesEvent,Lincyaw,LGU-SE-Internal/opentelemetry-demo,2026-06-01T00:12:54Z,labeled,Makefile: add help target that lists all available commands with descriptions,open,53
+29490,10237117894,IssuesEvent,gangster,asanexample/platform,2026-06-03T16:53:03Z,closed,"BACK stack P3: migrate tenants to Crossplane claims (coexistence, alpha first)",closed,0
+44601,10303248774,IssuesEvent,helmutus,anaticulae/hoverpower,2026-06-05T00:05:30Z,closed,do not copy pdfs if already exists,closed,0
+114786,10385220088,IssuesEvent,bour278,Kalshit/data-hub,2026-06-07T22:27:51Z,closed,QuestDB Enterprise??,closed,1
+2169,10110109651,IssuesEvent,korkibucek,korkibucek/contest-log-analyzer,2026-06-01T01:24:17Z,labeled,Strict WPX prefix derivation for multiplier accuracy,closed,0
+87872,10368441768,IssuesEvent,corozanu,corozanu/uptime.crz.ro,2026-06-06T23:58:02Z,closed,🛑 catal.in is down,closed,1
+29740,10239222085,IssuesEvent,ScottKirvan,ScottKirvan/QuKi-Notes,2026-06-03T17:41:03Z,opened,[BUG] Paragraphs are double-spaced in the editor,open,0
+21016,10203700752,IssuesEvent,calvin835,calvin835/onyba-web,2026-06-02T23:10:17Z,labeled,"P0 — Baseline audit: repo, routes, safety boundaries, and placeholder integrity",closed,1
+77009,10357422068,IssuesEvent,stanleyjbjob,stanleyjbjob/workflow-management-system,2026-06-06T11:11:00Z,unlabeled,5.3 延遲／超前計算,open,2
+83080,10366597455,IssuesEvent,ashish-rcloud1,SCALE-TEST-R-CLOUD/Repository-1-20260606132154,2026-06-06T21:22:34Z,labeled,Automated Issue #4604,open,0
+18156,10187117289,IssuesEvent,kylehenning,SparkDevNetwork/Rock,2026-06-02T15:32:44Z,labeled,Typo - WorkflowEntry Obsidian Block,closed,0
+79937,10364258114,IssuesEvent,Katie-Schwerer,Katie-Schwerer/fullstack-capstone-project,2026-06-06T18:17:37Z,unlabeled,Implement A Search Component,open,0
+100987,10372925090,IssuesEvent,Anof-cyber,InterceptSuite/ProxyBridge,2026-06-07T07:09:33Z,labeled,[Bug]: Can't add processes with ++ in name such as notepad++.exe - Invalid characters in process name error.,open,0
+104826,10374795489,IssuesEvent,constanderbrio,constanderbrio/repo-uauup79e,2026-06-07T09:47:31Z,opened,添加 CI 持续集成工作流,open,0
+15245,10162083189,IssuesEvent,BhupendraSinghRajpurohit,BhupendraSinghRajpurohit/gitCourse,2026-06-02T05:04:52Z,opened,PIR Generation using Claude Code,open,0
+45136,10303869629,IssuesEvent,AerCitam,AerCitam/StatusPage,2026-06-05T01:17:43Z,labeled,🛑 Aer-Wsale is down,open,0
+98602,10371920696,IssuesEvent,Brad-Edwards,Brad-Edwards/Ground-Control,2026-06-07T05:36:42Z,opened,Agent instructions: communicate that merging the dev branch into a feature branch is permitted,open,0
+102038,10373444647,IssuesEvent,gionn,heroyik/heroyik.github.io,2026-06-07T07:51:16Z,opened,Possible Miasma Worm infection detected in this repository,open,0
+71316,10353992598,IssuesEvent,nevena-rcloud,SCALE-TEST-R-CLOUD/Repository-1-20260606030328,2026-06-06T06:27:34Z,labeled,Automated Issue #3287,open,0
+95955,10370574075,IssuesEvent,ravisantoshgudimetla,agent-control-plane/aip-k8s,2026-06-07T03:18:28Z,labeled,gateway: aip/capabilities MCP tool — agent self-discovery of accessible services and governed resources,open,0
+46286,10307524095,IssuesEvent,sz5744486-eng,baldurk/renderdoc,2026-06-05T03:03:04Z,opened,renderdoc version 1.44 cannot capture any vulkan applications on the Android 16 platform.,open,0
+18759,10187352959,IssuesEvent,sunsided,glyphtrail/glyphtrail,2026-06-02T16:56:14Z,closed,Java: `callers` returns empty for methods invoked via `import static` (unqualified static calls),closed,0
+47767,10311114555,IssuesEvent,builderCE,codeequity/ceFlutterTester,2026-06-05T05:32:42Z,opened,IR Prog split: SeheMcRy,open,1
+101808,10373234898,IssuesEvent,JamesJedi420,JamesJedi420/containment-protocol,2026-06-07T07:36:03Z,assigned,Naming-hazard descriptor registry GameState persistence (slice 2),open,1
+34381,10254433174,IssuesEvent,mmathieum,mtransitapps/ca-st-jean-sur-richelieu-transport-collectif-bus-android,2026-06-04T00:29:46Z,closed,Setup,closed,5
+54727,10347140774,IssuesEvent,rschwab,UCSCLibrary/SiteImprove,2026-06-05T22:53:26Z,labeled,LibGuides Crawl: PRM,open,0
+77997,10359185817,IssuesEvent,brou-cgn,brou-cgn/recipebook,2026-06-06T13:09:21Z,opened,Formatierung der Einheiten- und Adjektivüberschriften sowie des Eingabefelds für Ignorierte Begriffe anpassen,open,0
+81988,10366091708,IssuesEvent,anhm-69,anhm-69/repo-kl5m6uup,2026-06-06T20:40:46Z,opened,添加 CONTRIBUTING.md,open,0
+105476,10375172622,IssuesEvent,AJaySi,AJaySi/ALwrity,2026-06-07T10:17:22Z,labeled,Onboarding step 6  finalstep - Testing,open,0
+99068,10372125053,IssuesEvent,alexeygrigorev,alexeygrigorev/pocketshell,2026-06-07T05:56:55Z,labeled,Detect localhost ports in agent messages and offer port forwarding,open,6
+24371,10208364293,IssuesEvent,Karanjot786,Karanjot786/TermUI,2026-06-03T02:22:00Z,closed,[bug] compare-bench.mjs crashes on malformed benchmark JSON,closed,2
+88053,10368497277,IssuesEvent,lycopenie,Br1ghtF0r3v3r/RayTraceAntiEntityESP,2026-06-07T00:03:30Z,opened,aaaaaaaaaaannnnnnnndddddd its all over the screen 😅✌️✌️😅😅😅✌️✌️✌️,open,0
+4785,10112112315,IssuesEvent,MScottAdams,deftai/directive,2026-06-01T03:16:30Z,labeled,feat(swarm): low-ceremony / headless launch for pre-approved cohorts (build on #1378 allocation-context token),open,2
+26166,10212430404,IssuesEvent,Larry-Garcia-dev,codingpanda-admin/Hurramy_Back,2026-06-03T05:22:35Z,reopened,Create a new action to send email from the form submitted in Help Center.,closed,0
+44155,10303058098,IssuesEvent,Rudometov,corretto/corretto-11,2026-06-04T23:32:54Z,closed,Corretto is transitioning from using release branches to tags,closed,0
+93252,10369570578,IssuesEvent,ilijevicdenis,ilijevicdenis/CodeCleaners.PgProj,2026-06-07T01:45:43Z,opened,Phase 12: Deployment Risk Analyzer (Safe/Warning/Dangerous/DataLoss/Blocking),open,0
+68773,10353209327,IssuesEvent,Jihr01,Jihr01/Joseph-,2026-06-06T05:25:32Z,opened,Web,closed,0
+2076,10110060966,IssuesEvent,WillemJiang,bytedance/deer-flow,2026-06-01T01:21:25Z,assigned,重启gateway后上文消失,open,8
+97436,10371516097,IssuesEvent,afewell-hh,afewell-hh/aid,2026-06-07T04:55:50Z,labeled,[Backlog Step 05] MoonBit topology kernel pure logic,open,0
+36850,10262999039,IssuesEvent,JeffMcClintock,JeffMcClintock/SynthEdit-Tracking,2026-06-04T05:03:00Z,closed,Issues with resizing the right and left columns,closed,1
+107564,10376916268,IssuesEvent,qldo,internance/config-service,2026-06-07T12:26:24Z,labeled,[CHORE] Implement prometheus for analysis purpose,open,0
+48880,10314930938,IssuesEvent,edomerli,ariiyyan/Lab-3,2026-06-05T07:44:44Z,closed,Test Scenario 2,closed,0
+65425,10351982635,IssuesEvent,suhasexorcloud,SCALE-TEST-R-CLOUD/Repository-1-20260606030328,2026-06-06T03:48:24Z,labeled,Automated Issue #843,open,0
+69469,10353470788,IssuesEvent,ashish-rcloud1,SCALE-TEST-R-CLOUD/Repository-1-20260606030328,2026-06-06T05:46:34Z,assigned,Automated Issue #2334,open,0
+11057,10154235174,IssuesEvent,SuperSandro2000,SuperSandro2000/upptime,2026-06-01T23:29:46Z,closed,🛑 Matrix Federation Tester is down,closed,1
+98524,10371886064,IssuesEvent,hanz-geric,hanz-geric/SmartBrew,2026-06-07T05:32:58Z,closed,SmartBrewAdminWeb: export CSV from Reports screen,closed,1
+28872,10235220817,IssuesEvent,MRIARC-08,MRIARC-08/VidyaSetu,2026-06-03T14:57:36Z,labeled,Implement reusable authentication middleware,open,0
+45071,10303269040,IssuesEvent,pelikhan,github/gh-aw,2026-06-05T01:05:59Z,closed,[aw] No-Op Runs,closed,29
+44466,10303243719,IssuesEvent,cbeaulieu-gt,glitchwerks/claude-prospector,2026-06-04T23:51:43Z,closed,feat: LLM-assisted variance analysis for tagged sessions (1b),closed,0
+37604,10265028238,IssuesEvent,lanyusea,lanyusea/screeps,2026-06-04T06:13:23Z,labeled,P1: Verify post-merge acceptance for expansion stagnation guard #1633/#1608,open,0
+51703,10342473872,IssuesEvent,linuxdynasty,eshu-hq/eshu,2026-06-05T20:12:21Z,labeled,MCP impact aggregate should preserve detection profile parity with API,open,1
+93324,10369582777,IssuesEvent,TrevorBurnham,jameskerr/react-arborist,2026-06-07T01:46:43Z,labeled,childrenAccessor property doesn't work,open,5
+95026,10370187497,IssuesEvent,PurHur,PurHur/php-compiler,2026-06-07T02:39:47Z,labeled,Stdlib: CurlHandle / CurlMultiHandle / CurlShareHandle enums — PHP 8.4 ext/curl resource→enum missing (curl.stub.php),open,0
+113962,10384905688,IssuesEvent,SteinGansmoe,SteinGansmoe/lanestomp,2026-06-07T22:02:01Z,closed,ADC Combat Profiles – Phase 1 Foundation,closed,0

@@ -2,6 +2,13 @@ import json
 import pandas as pd
 import os
 import streamlit as st
+
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from sklearn.preprocessing import MinMaxScaler
+import glob
+from tensorflow.keras.models import load_model
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data", "use")
 
@@ -107,3 +114,64 @@ def save_all_results(data , SAVE_DIR):
         json.dump(pr_labels, f)
         
     st.sidebar.success("✅ 모든 데이터 저장 완료!")
+
+from huggingface_hub import InferenceClient
+
+
+def get_repo_context(repo_name):
+    """
+    여러 parquet 파일에서 특정 저장소의 텍스트 정보를 취합하여 
+    '저장소가 무슨 일을 하는지'에 대한 요약문을 생성합니다.
+    """
+    # 1. 필요한 데이터 불러오기 (경로 수정 필요)
+    df_issue = pd.read_parquet("data/model/df_issue.parquet")
+    df_pr = pd.read_parquet("data/model/df_pr.parquet")
+    
+    # 2. 특정 저장소 데이터 필터링 및 텍스트 결합
+    repo_issues = df_issue[df_issue['repo_name'] == repo_name]['title'].head(3).tolist()
+    repo_prs = df_pr[df_pr['repo_name'] == repo_name]['title'].head(3).tolist()
+    
+    context = f"주요 이슈: {', '.join(repo_issues)} | 주요 PR: {', '.join(repo_prs)}"
+    return context
+
+@st.cache_resource
+def train_deep_learning_model():
+    data_path = r"bigdata_presentation\project_template\data\use"
+    event_files = glob.glob(os.path.join(data_path, "sampled_*.csv"))
+    
+    # 레포지토리별 이벤트 카운트 집계
+    all_data = []
+    for file in event_files:
+        event_type = os.path.basename(file).replace("sampled_", "").replace(".csv", "")
+        df = pd.read_csv(file)
+        counts = df['repo_name'].value_counts().reset_index()
+        counts.columns = ['repo_name', 'count']
+        counts['event_type'] = event_type
+        all_data.append(counts)
+    
+    final_df = pd.concat(all_data).pivot(index='repo_name', columns='event_type', values='count').fillna(0)
+    
+    # 학습 타겟(Label) 생성: 가중치 기반의 '성숙도 점수'를 정답지로 활용
+    # 실제 서비스에서는 미래의 Star 증가량을 타겟으로 잡는 것이 정석입니다.
+    y_raw = (final_df.get('PullRequestEvent', 0) * 10 + 
+             final_df.get('IssuesEvent', 0) * 5 + 
+             final_df.get('ForkEvent', 0) * 3 + 
+             final_df.get('WatchEvent', 0) * 1)
+    
+    scaler_x = MinMaxScaler()
+    X_scaled = scaler_x.fit_transform(final_df)
+    
+    y_scaled = 100 * (y_raw - y_raw.min()) / (y_raw.max() - y_raw.min())
+    
+    # 딥러닝 모델 설계
+    model = Sequential([
+        Dense(64, activation='relu', input_dim=X_scaled.shape[1]),
+        Dropout(0.2),
+        Dense(32, activation='relu'),
+        Dense(1, activation='linear') # 0~100 점수 예측
+    ])
+    
+    model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+    model.fit(X_scaled, y_scaled, epochs=50, batch_size=8, verbose=0)
+    
+    return model, scaler_x, final_df.columns.tolist()

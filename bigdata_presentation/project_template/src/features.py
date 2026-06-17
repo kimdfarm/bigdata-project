@@ -1,5 +1,5 @@
 # src/features.py
-
+import joblib
 
 import streamlit as st  
 
@@ -8,10 +8,9 @@ import pandas as pd
 import json
 from sentence_transformers import SentenceTransformer
 from sklearn.mixture import GaussianMixture
-from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import PCA
-
+from sklearn.preprocessing import StandardScaler
 
 @st.cache_data
 def clean(df: pd.DataFrame) -> pd.DataFrame:
@@ -69,7 +68,7 @@ def get_top_keywords(df, n_clusters, top_n=3):
 
 
 
-def apply_use(df, n=10):
+def apply_use(df, n=10 , type="issue"):
     model_sbert = get_sbert_model()
     texts = df['combined_text'].fillna("").astype(str).tolist()
     
@@ -99,18 +98,34 @@ def apply_use(df, n=10):
     
     status_text.success("임베딩 완료!")
     
-    # 3. PCA로 차원 축소 (768 -> 50)
+    # 3. PCA로 차원 축소 90%
     # GMM은 고차원 벡터에서 계산량이 매우 많으므로, 차원을 줄이면 속도가 비약적으로 상승합니다.
-    pca = PCA(n_components=50)
+    pca = PCA(n_components=0.9)
     reduced_embeddings = pca.fit_transform(embeddings)
+    scaler = StandardScaler()
+    scaled_embeddings = scaler.fit_transform(reduced_embeddings)
+    import joblib
     
     # 4. GMM 적용 (차원 축소된 데이터 사용)
-    gmm = GaussianMixture(n_components=n, random_state=42, covariance_type='full')
-    gmm.fit(reduced_embeddings)
-    
-    probs = gmm.predict_proba(reduced_embeddings)
+    gmm = GaussianMixture(
+    n_components=n, 
+    random_state=42, 
+    covariance_type='full', 
+    reg_covar=1e-3  # 기본값은 1e-6인데, 1e-3 정도로 늘려보세요.
+)
+    gmm.fit(scaled_embeddings)
+    # 2. 폴더가 없으면 하위 폴더까지 통째로 자동 생성하는 코드 추가
+    os.makedirs(rf'bigdata_presentation\project_template\data\pred\{type}', exist_ok=True)
+    # ================= [이 부분을 추가합니다] =================
+    # 학습된 3개의 모델을 파일로 저장 (꺼내기)
+    joblib.dump(pca, rf'bigdata_presentation\project_template\data\pred\{type}\trained_pca.pkl')
+    joblib.dump(scaler, rf'bigdata_presentation\project_template\data\pred\{type}\trained_scaler.pkl')
+    joblib.dump(gmm, rf'bigdata_presentation\project_template\data\pred\{type}\trained_gmm.pkl')
+    # =========================================================
+    probs = gmm.predict_proba(scaled_embeddings)
     
     for i in range(n):
+
         df[f'Theme_{i}_weight'] = probs[:, i]
         
     df['cluster'] = np.argmax(probs, axis=1)
@@ -118,25 +133,105 @@ def apply_use(df, n=10):
     
     return df, labels
 import os
+
 def load_data_from_disk(SAVE_DIR):
     data_dict = {}
     
-    # 1. Parquet 파일 로드 (데이터프레임들)
+    # 필수 파일 리스트 정의
     parquet_files = ['df_issue', 'df_pr', 'df_fork', 'df_issue_comment', 'df_issues', 'df_pr_comment', 'df_pr_review']
+    json_files = ['issue_labels', 'pr_labels']
+    
+    # 1. Parquet 로드
     for name in parquet_files:
         path = os.path.join(SAVE_DIR, f"{name}.parquet")
         if os.path.exists(path):
             data_dict[name] = pd.read_parquet(path)
+        else:
+            # 파일이 없으면 빈 데이터프레임 할당 (에러 방지)
+            data_dict[name] = pd.DataFrame() 
             
-    # 2. JSON 파일 로드 (라벨 정보들) - 여기가 중요합니다!
-    for key in ['issue_labels', 'pr_labels']:
-            path = os.path.join(SAVE_DIR, f"{key}.json")
-            if os.path.exists(path):
-                with open(path, 'r', encoding='utf-8') as f:
-                    # 1. f.read()가 아니라 반드시 json.load(f)를 사용해야 합니다.
-                    data_dict[key] = json.load(f) 
-                    
-                    # 2. 혹시나 하는 마음에 디버깅 출력 (콘솔 확인)
-                    print(f"{key} 타입 확인: {type(data_dict[key])}")
+    # 2. JSON 로드
+    for key in json_files:
+        path = os.path.join(SAVE_DIR, f"{key}.json")
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data_dict[key] = json.load(f)
+        else:
+            # 파일이 없으면 빈 딕셔너리 할당 (에러 방지)
+            data_dict[key] = {} 
     
     return data_dict
+
+
+def validate_data(data_dict):
+    # 필수 데이터프레임 확인
+    required = ['df_issue', 'df_pr', 'df_fork']
+    for key in required:
+        if key not in data_dict or data_dict[key] is None or data_dict[key].empty:
+            return False, f"데이터 {key}가 비어있거나 로드되지 않았습니다."
+    return True, "성공"
+
+def service_load_data_from_disk(SAVE_DIR='data/model'):
+    data_dict = {}
+    
+    # 디렉토리가 존재하는지 확인
+    if not os.path.exists(SAVE_DIR):
+        st.error(f"경로를 찾을 수 없습니다: {SAVE_DIR}")
+        return data_dict
+
+    # 폴더 내 모든 파일 리스트 가져오기
+    files = os.listdir(SAVE_DIR)
+    
+    # 1. Parquet 파일 처리
+    for file in files:
+        if file.endswith('.parquet'):
+            key = file.replace('.parquet', '')
+            path = os.path.join(SAVE_DIR, file)
+            data_dict[key] = pd.read_parquet(path)
+            
+    # 2. JSON 파일 처리
+    for file in files:
+        if file.endswith('.json'):
+            key = file.replace('.json', '')
+            path = os.path.join(SAVE_DIR, file)
+            with open(path, 'r', encoding='utf-8') as f:
+                data_dict[key] = json.load(f)
+    
+    return data_dict
+def predict_with_real_titles(new_texts, cluster_mapping, threshold=0.40):
+    pca = joblib.load('trained_pca.pkl')
+    scaler = joblib.load('trained_scaler.pkl')
+    gmm = joblib.load('trained_gmm.pkl')
+    model_sbert = get_sbert_model()
+    
+    # 1. 인코딩 및 전처리
+    embeddings = model_sbert.encode(new_texts, show_progress_bar=False)
+    reduced_embeddings = pca.transform(embeddings)
+    scaled_embeddings = scaler.transform(reduced_embeddings)
+    
+    # 2. GMM 예측 및 최댓값 추출
+    probs = gmm.predict_proba(scaled_embeddings)
+    max_probs = np.max(probs, axis=1)
+    pred_clusters = np.argmax(probs, axis=1)
+    
+    # 3. Threshold 기준 미달이면 -1(기타) 처리
+    final_clusters = []
+    for cluster, max_prob in zip(pred_clusters, max_probs):
+        if max_prob < threshold:
+            final_clusters.append(-1)
+        else:
+            final_clusters.append(cluster)
+            
+    # 4. 결과 데이터프레임 생성
+    result_df = pd.DataFrame({
+        'Text': new_texts,
+        'Cluster_Num': final_clusters,
+        'Confidence': max_probs
+    })
+    
+    # ================= [이 부분이 핵심입니다] =================
+    # 미리 준비한 딕셔너리를 이용해 숫자 번호를 실제 제목으로 치환합니다.
+    result_df['Theme_Title'] = result_df['Cluster_Num'].map(cluster_mapping)
+    # =========================================================
+    
+    return result_df
